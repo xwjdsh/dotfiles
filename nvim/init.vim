@@ -7,24 +7,25 @@ set background=dark
 colorscheme solarized
 ""===================="
 
-
 set nocompatible              " be iMproved, required
+hi Normal  ctermfg=252 ctermbg=none
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
-"set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=~/.vim/bundle/Vundle.vim
 call plug#begin('~/.vim/bundle')
 
 " let Vundle manage Vundle, require
 Plug 'VundleVim/Vundle.vim'
 Plug 'fatih/vim-go'
+Plug 'Shougo/deoplete.nvim'
+Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'racer-rust/vim-racer'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'rust-lang/rust.vim'
-Plug 'Valloric/YouCompleteMe'
 Plug 'yonchu/accelerated-smooth-scroll'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'easymotion/vim-easymotion'
@@ -38,9 +39,6 @@ Plug 'pangloss/vim-javascript'
 Plug 'mileszs/ack.vim'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
-" format json
-Plug  'tpope/vim-jdaddy'
-"Plug 'axiaoxin/vim-json-line-format'
 
 " for ruby
 Plug 'vim-ruby/vim-ruby'
@@ -58,7 +56,9 @@ set hidden
 
 set clipboard=unnamed
 
-set clipboard+=unnamedplus
+vmap <C-c> y:call system("xclip -i -selection clipboard", getreg("\""))<CR>:call system("xclip -i", getreg("\""))<CR>
+nmap <C-v> :call setreg("\"",system("xclip -o -selection clipboard"))<CR>p
+
 "show line number 
 set number
 "Show related row numbers
@@ -133,7 +133,8 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 set laststatus=2
 " using it ,or dont work
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'badwolf'
+"let g:airline_theme = 'sol'
+let g:airline_theme = 'wombat'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -201,7 +202,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
-autocmd! BufWritePost * Neomake
+"autocmd! BufWritePost * Neomake
 "let g:neomake_open_list = 1
 "let g:neomake_error_sign = {'text': '>>', 'texthl': 'NeomakeErrorSign'}
 
@@ -210,3 +211,13 @@ autocmd! BufWritePost * Neomake
 "let g:syntastic_check_on_open = 0
 "let g:syntastic_check_on_wq = 1
 "let g:syntastic_go_checkers = ['go', 'errcheck']
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
+" For deoplete-go
+let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+let g:deoplete#sources#go#package_dot = 1
+let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+let g:deoplete#sources#go#pointer = 1
+let g:deoplete#sources#go#use_cache = 1
+let g:deoplete#sources#go#json_directory = '~/.cache/deoplete/go/darwin_amd64'
