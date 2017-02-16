@@ -99,9 +99,6 @@ export GOPATH=$HOME/GOPATH
 export PATH=$HOME/bin:/usr/local/bin:$PATH:$GOPATH/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
-export RABBITMQ_HOME=$HOME/working/rabbitmq_server-3.6.5
-export PATH=$PATH:$RABBITMQ_HOME/sbin
-
 source $ZSH/oh-my-zsh.sh
 
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
@@ -132,7 +129,6 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
 
 export NVM_DIR="/Users/wendell/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-export PATH=$PATH:$HOME/.rvm/bin:$HOME/.cargo/bin
+export PATH=$PATH:$HOME/.rvm/bin:$HOME/.cargo/bin:/usr/local/sbin
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
