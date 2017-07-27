@@ -83,8 +83,9 @@ alias gc="git commit -m"
 alias gco="git checkout"
 alias gl="git log"
 
-alias tmuxa="tmux attach"
-alias tmuxk="tmux kill-session"
+alias setproxy="export ALL_PROXY=socks5://127.0.0.1:1030"
+alias unsetproxy="unset ALL_PROXY"
+alias ip="curl http://ip.cn"
 
 plugins=(git autojump command-not-found sudo web-search zsh-proxychains-ng zsh-autosuggestions)
 plugins+=(zsh-completions zsh-syntax-highlighting k)
@@ -96,7 +97,7 @@ plugins+=(zsh-completions zsh-syntax-highlighting k)
 autoload -U compinit && compinit -u
 
 export GOPATH=$HOME/GOPATH
-export PATH=$HOME/bin:/usr/local/bin:$PATH:$GOPATH/bin
+export PATH=$HOME/bin:$PATH:$GOPATH/bin
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

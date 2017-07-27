@@ -11,20 +11,15 @@ set nocompatible              " be iMproved, required
 hi Normal  ctermfg=252 ctermbg=none
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call plug#begin('~/.vim/bundle')
-
-" let Vundle manage Vundle, require
-Plug 'VundleVim/Vundle.vim'
+call plug#begin('~/.local/share/nvim/plugged')
 Plug 'fatih/vim-go'
-Plug 'Shougo/deoplete.nvim'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'racer-rust/vim-racer'
-Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
+Plug 'scrooloose/nerdtree'
 Plug 'rust-lang/rust.vim'
 Plug 'yonchu/accelerated-smooth-scroll'
 Plug 'nathanaelkane/vim-indent-guides'
@@ -39,11 +34,11 @@ Plug 'pangloss/vim-javascript'
 Plug 'mileszs/ack.vim'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
+Plug 'johngrib/vim-game-code-break'
 
 " for ruby
 Plug 'vim-ruby/vim-ruby'
 call plug#end()            " required
-filetype plugin indent on    " required
 
 "set my leader
 "let mapleader="\<Space>"
@@ -133,7 +128,7 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 set laststatus=2
 " using it ,or dont work
 let g:airline_powerline_fonts = 1
-"let g:airline_theme = 'sol'
+"let g:airline_theme = 'light'
 let g:airline_theme = 'wombat'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
@@ -215,9 +210,7 @@ set statusline+=%*
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 " For deoplete-go
-let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
-let g:deoplete#sources#go#package_dot = 1
-let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
-let g:deoplete#sources#go#pointer = 1
-let g:deoplete#sources#go#use_cache = 1
-let g:deoplete#sources#go#json_directory = '~/.cache/deoplete/go/darwin_amd64'
+"let g:deoplete#sources#go#gocode_binary = $GOPATH.'/bin/gocode'
+"let g:deoplete#sources#go#package_dot = 1
+"let g:deoplete#sources#go#sort_class = ['package', 'func', 'type', 'var', 'const']
+"let g:deoplete#sources#go#pointer = 1
