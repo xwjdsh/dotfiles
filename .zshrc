@@ -1,18 +1,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
 ZSH_THEME="kolo"
 
-
-
-#ble autosuggestions automatically.
-zle-line-init() {
-    zle autosuggest-start
-}
 # CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
@@ -54,23 +44,37 @@ zle-line-init() {
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-#alias setting
-alias cls="clear"
-#alias vi="vim"
+
+plugins=(git command-not-found sudo web-search zsh-autosuggestions zsh-syntax-highlighting autojump)
+
+# for autojump plugin
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+# for zsh-autosuggestions plugin
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
+
+# for nvm auto load
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+
+# environment variate
+export GOPATH=$HOME/Working/GOPATH
+export CARGO_HOME=$HOME/.cargo
+export JAVA_HOME="$(/usr/libexec/java_home)"
+export RVM_HOME=$HOME/.rvm
+export PATH=$CARGO_HOME/bin:$GOPATH/bin:$HOME/.bin:$RVM_HOME/bin:$PATH
+
+source $HOME/.secret.env
+source $ZSH/oh-my-zsh.sh
+
+# alias config
+#
+# custom
 alias vi="nvim"
-alias rd="rmdir"
-alias df="df -h"
-alias la="ls -ah"
-alias ll="ls -lh"
-alias cd..="cd .."
-alias cd...="cd ../.."
-alias cd....="cd ../../.."
-alias ..="cd .."
-alias ...="cd ../.."
-alias ....="cd ../../.."
-
-
+alias vim="nvim"
+# for git
 alias gs="git status"
+alias gsm="git summary"
 alias ga='git add'
 alias gd='git diff'
 alias gf='git fetch'
@@ -79,57 +83,11 @@ alias grb='git rebase'
 alias gbr='git branch'
 alias gpl="git pull"
 alias gps="git push"
-alias gc="git commit -m"
 alias gco="git checkout"
 alias gl="git log"
-
-alias setproxy="export ALL_PROXY=socks5://127.0.0.1:1030"
-alias unsetproxy="unset ALL_PROXY"
+alias gc="git commit -m"
+alias gm="git merge"
+# for proxy
+alias proxy="export ALL_PROXY=socks5://127.0.0.1:1030"
+alias unproxy="unset ALL_PROXY"
 alias ip="curl http://ip.cn"
-
-plugins=(git autojump command-not-found sudo web-search zsh-proxychains-ng zsh-autosuggestions)
-plugins+=(zsh-completions zsh-syntax-highlighting k)
-
-# User configuration
-
-## for autojump plugin
-[[ -s ~/.autojump/etc/profile.d/autojump.sh  ]] && . ~/.autojump/etc/profile.d/autojump.sh
-autoload -U compinit && compinit -u
-
-export GOPATH=$HOME/GOPATH
-export PATH=$HOME/bin:$PATH:$GOPATH/bin
-# export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
-
-ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=10"
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-
-export NVM_DIR="/Users/wendell/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-export PATH=$PATH:$HOME/.rvm/bin:$HOME/.cargo/bin:/usr/local/sbin
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
