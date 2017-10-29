@@ -167,3 +167,6 @@ set statusline+=%*
 
 " for deoplete
 let g:deoplete#enable_at_startup = 1
+
+set autoread
+au CursorHold,CursorHoldI * checktime

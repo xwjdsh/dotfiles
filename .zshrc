@@ -47,6 +47,9 @@ ZSH_THEME="kolo"
 
 plugins=(git command-not-found sudo web-search zsh-autosuggestions zsh-syntax-highlighting autojump)
 
+source $HOME/.secret.env
+source $ZSH/oh-my-zsh.sh
+
 # for autojump plugin
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
@@ -63,9 +66,6 @@ export CARGO_HOME=$HOME/.cargo
 export JAVA_HOME="$(/usr/libexec/java_home)"
 export RVM_HOME=$HOME/.rvm
 export PATH=$CARGO_HOME/bin:$GOPATH/bin:$HOME/.bin:$RVM_HOME/bin:$PATH
-
-source $HOME/.secret.env
-source $ZSH/oh-my-zsh.sh
 
 # alias config
 #
