@@ -61,6 +61,9 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
 
 # environment variate
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+
 export GOPATH=$HOME/Working/GOPATH
 export CARGO_HOME=$HOME/.cargo
 export JAVA_HOME="$(/usr/libexec/java_home)"
