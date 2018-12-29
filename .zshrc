@@ -45,9 +45,8 @@ ZSH_THEME="kolo"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 
-plugins=(git command-not-found sudo web-search zsh-autosuggestions zsh-syntax-highlighting autojump)
+plugins=(git command-not-found sudo zsh-syntax-highlighting autojump)
 
-source $HOME/.secret.env
 source $ZSH/oh-my-zsh.sh
 
 # for autojump plugin
@@ -66,9 +65,10 @@ export LANG=en_US.UTF-8
 
 export GOPATH=$HOME/Working/GOPATH
 export CARGO_HOME=$HOME/.cargo
-export JAVA_HOME="$(/usr/libexec/java_home)"
+export FLUTTER_HOME=$HOME/Hobby/flutter
 export RVM_HOME=$HOME/.rvm
 export PATH=$CARGO_HOME/bin:$GOPATH/bin:$HOME/.bin:$RVM_HOME/bin:$PATH
+export PATH=$PATH:$FLUTTER_HOME/bin
 
 # alias config
 #
@@ -81,10 +81,10 @@ alias gsm="git summary"
 alias ga='git add'
 alias gd='git diff'
 alias gf='git fetch'
-alias grv='git remote -v'
+#alias grv='git remote -v'
 alias grb='git rebase'
 alias gbr='git branch'
-alias gpl="git pull"
+alias gpl="git pull --rebase"
 alias gps="git push"
 alias gco="git checkout"
 alias gl="git log"
@@ -94,3 +94,7 @@ alias gm="git merge"
 alias proxy="export ALL_PROXY=socks5://127.0.0.1:1030"
 alias unproxy="unset ALL_PROXY"
 alias ip="curl http://ip.cn"
+
+command -v vg >/dev/null 2>&1 && eval "$(vg eval --shell zsh)"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

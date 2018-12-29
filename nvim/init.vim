@@ -13,9 +13,10 @@ hi Normal  ctermfg=252 ctermbg=none
 filetype off                  " required
 
 call plug#begin('~/.local/share/nvim/plugged')
-Plug 'fatih/vim-go'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'zchee/deoplete-go', { 'do': 'make'}
+
 Plug 'jiangmiao/auto-pairs'
 Plug 'racer-rust/vim-racer'
 Plug 'scrooloose/nerdcommenter'
@@ -37,6 +38,10 @@ Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-surround'
 Plug 'johngrib/vim-game-code-break'
 Plug 'sebdah/vim-delve'
+" For gotests
+Plug 'buoto/gotests-vim'
+Plug 'tpope/vim-surround'
+Plug '/usr/local/opt/fzf'
 
 call plug#end()            " required
 
@@ -55,8 +60,8 @@ set number
 "Show related row numbers
 set relativenumber
 
-"tab length  
-set tabstop=2  
+" tab length  
+set tabstop=2
 set cindent shiftwidth=2
 set autoindent shiftwidth=2 
 
@@ -85,6 +90,7 @@ map <leader>bd :bd<cr>
 
 " setting for golang
 let g:go_fmt_command = "goimports"
+let g:go_fmt_options = { 'goimports': '-local github.com/xwjdsh' }
 let g:go_highlight_functions = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_structs = 1
@@ -92,14 +98,19 @@ let g:go_highlight_interfaces = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_autosave = 1
+let g:go_auto_sameids = 1
+
+let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 
 au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>gd <Plug>(go-doc)
+au FileType go nmap <Leader>g <Plug>(go-generate)
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
 au FileType go nmap <leader>c <Plug>(go-coverage)
+au FileType go nmap <leader>v <Plug>(go-vet)
 au FileType go nmap gd <Plug>(go-def-tab)
+au FileType go nmap gr <Plug>(go-referrers)
 
 "  setting for NERDTree
 map <leader>f :NERDTreeToggle<CR>
@@ -167,6 +178,8 @@ set statusline+=%*
 
 " for deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#go#gocode_binary = '/Users/wendell/Working/GOPATH/bin/gocode'
+let g:deoplete#sources#go#pointer = 1
 
-set autoread
-au CursorHold,CursorHoldI * checktime
+" for nerdcommenter
+let g:NERDSpaceDelims = 1
