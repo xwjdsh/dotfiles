@@ -124,7 +124,6 @@ let g:NERDTreeDirArrowCollapsible = '▾'
 
 
 " set for air line
-set laststatus=2
 let g:airline_powerline_fonts = 1
 "let g:airline_theme = 'light'
 let g:airline_theme = 'wombat'
@@ -172,14 +171,11 @@ let g:move_key_modifier = 'C'
 "For ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
 " for deoplete
 let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#gocode_binary = '/Users/wendell/Working/GOPATH/bin/gocode'
+let g:deoplete#sources#go#gocode_binary = '/Users/wendell/go/bin/gocode'
 let g:deoplete#sources#go#pointer = 1
+let g:deoplete#sources#jedi#python_path = 'python3'
 
 " for nerdcommenter
 let g:NERDSpaceDelims = 1
