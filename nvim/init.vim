@@ -10,12 +10,17 @@ colorscheme solarized
 set nocompatible              " be iMproved, required
 hi Normal  ctermfg=252 ctermbg=none
 
+set hlsearch
+hi Search ctermbg=LightGray
+hi Search ctermfg=Red
+
 filetype off                  " required
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-go', { 'do': 'make'}
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" Plug 'zchee/deoplete-go', { 'do': 'make'}
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'racer-rust/vim-racer'
@@ -99,18 +104,54 @@ let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_fmt_autosave = 1
 let g:go_auto_sameids = 1
-
 let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 
-au FileType go nmap <Leader>i <Plug>(go-info)
-au FileType go nmap <Leader>g <Plug>(go-generate)
+" au FileType go nmap <Leader>i <Plug>(go-info)
+" au FileType go nmap <Leader>g <Plug>(go-generate)
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
-au FileType go nmap <leader>c <Plug>(go-coverage)
-au FileType go nmap <leader>v <Plug>(go-vet)
-au FileType go nmap gd <Plug>(go-def-tab)
-au FileType go nmap gr <Plug>(go-referrers)
+" au FileType go nmap <leader>c <Plug>(go-coverage)
+" au FileType go nmap <leader>v <Plug>(go-vet)
+" au FileType go nmap gd <Plug>(go-def-tab)
+" au FileType go nmap gr <Plug>(go-referrers)
+
+" --------------- coc.vim --------------
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+"---------------------------------------
 
 "  setting for NERDTree
 map <leader>f :NERDTreeToggle<CR>
@@ -130,6 +171,7 @@ let g:airline_theme = 'wombat'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
+let g:statline_syntastic = 0
 
 "Settings for TagBar
 map <leader>g :TagbarToggle<CR>
@@ -170,12 +212,6 @@ let g:move_key_modifier = 'C'
 
 "For ack
 let g:ackprg = 'ag --nogroup --nocolor --column'
-
-" for deoplete
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#go#gocode_binary = '/Users/wendell/go/bin/gocode'
-let g:deoplete#sources#go#pointer = 1
-let g:deoplete#sources#jedi#python_path = 'python3'
 
 " for nerdcommenter
 let g:NERDSpaceDelims = 1
