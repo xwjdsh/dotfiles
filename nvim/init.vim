@@ -10,9 +10,9 @@ colorscheme solarized
 set nocompatible              " be iMproved, required
 hi Normal  ctermfg=252 ctermbg=none
 
-set hlsearch
-hi Search ctermbg=LightGray
-hi Search ctermfg=Red
+" set hlsearch
+" hi Search ctermbg=LightGray
+" hi Search ctermfg=Red
 
 filetype off                  " required
 
