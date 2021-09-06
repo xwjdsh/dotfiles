@@ -101,9 +101,7 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 export GOPATH=$HOME/go
-export PATH=$GOPATH/bin:$HOME/.bin:$PATH
-
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+export PATH=$PATH:$GOPATH/bin:$HOME/.bin:$HOME/Work/arcanist/bin:$HOME/.cargo/bin
 
 alias vi="nvim"
 alias vim="nvim"

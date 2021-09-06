@@ -7,6 +7,9 @@ set background=dark
 colorscheme solarized
 ""===================="
 
+set encoding=utf-8
+set fileencoding=utf-8
+
 set nocompatible              " be iMproved, required
 hi Normal  ctermfg=252 ctermbg=none
 
@@ -18,9 +21,8 @@ filetype off                  " required
 
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'zchee/deoplete-go', { 'do': 'make'}
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neovim/nvim-lspconfig'
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'racer-rust/vim-racer'
