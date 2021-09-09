@@ -1,0 +1,8 @@
+namespace: default
+commonLabels:
+  app: mysql
+resources:
+- deployment.yaml
+- service.yaml
+- pv.yaml
+- pvc.yaml
