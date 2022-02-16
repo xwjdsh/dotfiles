@@ -22,15 +22,13 @@ filetype off                  " required
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'neovim/nvim-lspconfig'
-
 Plug 'jiangmiao/auto-pairs'
 Plug 'racer-rust/vim-racer'
 Plug 'scrooloose/nerdcommenter'
 Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'rust-lang/rust.vim'
-Plug 'yonchu/accelerated-smooth-scroll'
+Plug 'psliwka/vim-smoothie'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'easymotion/vim-easymotion'
 Plug 'vim-airline/vim-airline'
@@ -113,10 +111,10 @@ let g:go_metalinter_enabled = ['vet', 'golint', 'errcheck']
 au FileType go nmap <leader>r <Plug>(go-run)
 au FileType go nmap <leader>b <Plug>(go-build)
 au FileType go nmap <leader>t <Plug>(go-test)
+au FileType go nmap <leader>rr <Plug>(go-referrers)
 " au FileType go nmap <leader>c <Plug>(go-coverage)
 " au FileType go nmap <leader>v <Plug>(go-vet)
 " au FileType go nmap gd <Plug>(go-def-tab)
-" au FileType go nmap gr <Plug>(go-referrers)
 
 " --------------- coc.vim --------------
 inoremap <silent><expr> <TAB>

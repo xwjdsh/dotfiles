@@ -1,8 +1,0 @@
-namespace: default
-commonLabels:
-  app: redis
-resources:
-- deployment.yaml
-- service.yaml
-- pv.yaml
-- pvc.yaml
