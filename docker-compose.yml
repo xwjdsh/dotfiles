@@ -31,16 +31,3 @@ services:
     volumes:
         - "./rabbitmq/data/:/var/lib/rabbitmq/"
         - "./rabbitmq/log/:/var/log/rabbitmq"
-
-  consul-server:
-    image: consul:1.9.3
-    container_name: 'consul-server'
-    restart: always
-    volumes:
-     - ./consul/server1.json:/consul/config/server1.json:ro
-     - ./consul/certs/:/consul/config/certs/:ro
-    ports:
-      - "8500:8500"
-      # - "8600:8600/tcp"
-      # - "8600:8600/udp"
-    command: "agent -server -ui -bootstrap-expect=1 -client=0.0.0.0"
