@@ -76,6 +76,7 @@ ZSH_THEME="kolo"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git command-not-found sudo zsh-syntax-highlighting z)
+plugins+=(web-search copyfile copydir dirhistory)
 
 source $ZSH/oh-my-zsh.sh
 
