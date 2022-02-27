@@ -19,6 +19,7 @@ hi Normal  ctermfg=252 ctermbg=none
 
 filetype off                  " required
 
+" install plug.vim automatically
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
@@ -37,7 +38,6 @@ Plug 'hrsh7th/vim-vsnip'
 
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'jiangmiao/auto-pairs'
 Plug 'racer-rust/vim-racer'
 Plug 'scrooloose/nerdcommenter'
@@ -51,8 +51,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'matze/vim-move'
 Plug 'neomake/neomake'
-"Plug 'scrooloose/syntastic'
-Plug 'kien/ctrlp.vim'
 Plug 'pangloss/vim-javascript'
 Plug 'mileszs/ack.vim'
 Plug 'mhinz/vim-startify'
@@ -64,6 +62,8 @@ Plug 'buoto/gotests-vim'
 Plug 'tpope/vim-surround'
 Plug '/usr/local/opt/fzf'
 
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim'
 call plug#end()            " required
 
 
@@ -211,6 +211,12 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#left_sep = ' '
 let g:airline#extensions#tabline#left_alt_sep = '|'
 let g:statline_syntastic = 0
+
+" setting for telescope
+nnoremap <leader>sf <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>sg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>sb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>sh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 "Settings for TagBar
 map <leader>g :TagbarToggle<CR>
