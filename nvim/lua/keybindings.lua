@@ -20,6 +20,10 @@ map("n", "<C-d>", "9j", opt)
 map("v", "<", "<gv", opt)
 map("v", ">", ">gv", opt)
 
+-- 复制粘贴到系统剪贴板
+map("v", "<C-c>", "\"+y", opt)
+map("n", "<C-v>", "\"+p", opt)
+
 ------------------------------------------------------------------
 -- windows 分屏快捷键
 map("n", "sv", ":vsp<CR>", opt)
@@ -43,6 +47,7 @@ map("n", "<leader>i", "gg=G", opt)
 -- bufferline 跳转
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
+map("n", "<C-x>", ":BufferLinePickClose<CR>", opt)
 
 -- lsp 回调函数快捷键设置
 local pluginKeys = {}
