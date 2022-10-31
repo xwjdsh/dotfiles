@@ -1,12 +1,13 @@
-" 基础配置
+" basic
 lua require('basic')
-" coc
+" coc && extensions
 lua require('coc')
-" 快捷键映射
+let g:coc_global_extensions = ['coc-go', 'coc-git', 'coc-prettier']
+" keymap
 lua require('keybindings')
-" Packer插件管理
+" packer plugins
 lua require('plugins')
-" 插件配置
+" plugins configs
 lua require('plugins.nvim-tree')
 lua require('plugins.bufferline')
 lua require('plugins.nord')
@@ -14,3 +15,5 @@ lua require('plugins.nvim-treesitter')
 lua require('plugins.lualine')
 lua require('plugins.nvim-autopairs')
 lua require('plugins.neoscroll')
+
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')

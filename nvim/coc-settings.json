@@ -1,11 +1,15 @@
 {
   "suggest.noselect": true,
+  "coc.preferences.formatOnSaveFiletypes": ["*"],
   "languageserver": {
     "go": {
       "command": "gopls",
       "rootPatterns": ["go.mod"],
       "trace.server": "verbose",
-      "filetypes": ["go"]
+      "filetypes": ["go"],
+      "initializationOptions": {
+        "usePlaceholders": true
+      }
     }
   }
 }
