@@ -10,7 +10,7 @@ lua require('plugins')
 " plugins configs
 lua require('plugins.nvim-tree')
 lua require('plugins.bufferline')
-lua require('plugins.nord')
+lua require('plugins.catppuccin')
 lua require('plugins.nvim-treesitter')
 lua require('plugins.lualine')
 lua require('plugins.nvim-autopairs')

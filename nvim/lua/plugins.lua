@@ -8,7 +8,9 @@ return require('packer').startup(function()
       'kyazdani42/nvim-tree.lua',
       requires = 'kyazdani42/nvim-web-devicons'
   }
-  use 'shaunsingh/nord.nvim'
+  -- colorscheme
+  use 'catppuccin/nvim'
+
   use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons'}
   use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
   use {
