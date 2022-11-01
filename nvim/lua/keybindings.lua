@@ -52,6 +52,7 @@ map("n", "<C-x>", ":BufferLinePickClose<CR>", opt)
 -- fzf-lua
 map('n', '<c-p>', ":FzfLua files<CR>", opt)
 map('n', '<c-g>', ":FzfLua grep<CR>", opt)
+map('n', '<leader>l', ":FzfLua buffers<CR>", opt)
 map('n', '<leader>g', ":FzfLua git_status<CR>", opt)
 
 -- coc
