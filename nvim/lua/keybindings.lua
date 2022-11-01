@@ -48,8 +48,8 @@ map("n", "<leader>i", "gg=G", opt)
 map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
 map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
 map("n", "<C-x>", ":BufferLinePickClose<CR>", opt)
-map('n', '<leader>bg', ":BufferLineGroupToggle ", {silent = false})
-map('n', '<leader>bgc', ":BufferLineGroupClose ", {silent = false})
+map('n', '<leader>bgt', ":BufferLineGroupToggle ", {silent = false, nowait = true})
+map('n', '<leader>bgc', ":BufferLineGroupClose ", {silent = false, nowait = true})
 
 -- fzf-lua
 map('n', '<c-p>', ":FzfLua files<CR>", opt)
