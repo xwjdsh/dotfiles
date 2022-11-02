@@ -35,4 +35,6 @@ return require('packer').startup(function()
   use { 'ibhagwan/fzf-lua',
     requires = { 'kyazdani42/nvim-web-devicons' }
   }
+
+  use {'github/copilot.vim'}
 end)

@@ -24,6 +24,7 @@ require("bufferline").setup {
             toggle_hidden_on_enter = true,
           },
           items = {
+            groups.builtin.pinned,
             groups.builtin.ungrouped,
             {
               name = 'Tests',
