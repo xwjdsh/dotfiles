@@ -15,5 +15,6 @@ lua require('plugins.nvim-treesitter')
 lua require('plugins.lualine')
 lua require('plugins.nvim-autopairs')
 lua require('plugins.neoscroll')
+lua require('plugins.toggleterm')
 
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')

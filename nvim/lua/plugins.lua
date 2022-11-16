@@ -20,7 +20,6 @@ return require('packer').startup(function()
     'nvim-lualine/lualine.nvim',
     requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
-  use {'neovim/nvim-lspconfig', 'williamboman/nvim-lsp-installer'}
   -- autopairs
   use 'windwp/nvim-autopairs'
   -- neoscroll
@@ -37,4 +36,9 @@ return require('packer').startup(function()
   }
 
   use {'github/copilot.vim'}
+
+  use {'akinsho/toggleterm.nvim'}
+
+  use {'folke/which-key.nvim'}
+
 end)
