@@ -1,0 +1,13 @@
+version: "3.1"
+
+services:
+  fava:
+    image: beancount-fava
+    build: .
+    restart: always
+    ports:
+      - 5555:5000
+    volumes:
+      - ./data:/bean
+    environment:
+      BEANCOUNT_FILE: /bean/data.bean
