@@ -1,0 +1,1 @@
+docker/beancount/data/** filter=git-crypt diff=git-crypt
