@@ -10,4 +10,4 @@ services:
     volumes:
       - ./data:/bean
     environment:
-      BEANCOUNT_FILE: /bean/data.bean
+      BEANCOUNT_FILE: /bean/main.bean
