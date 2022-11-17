@@ -1,0 +1,18 @@
+- defaults:
+    link:
+      create: true
+      relink: true
+
+- create:
+    - ~/.ssh
+    - ~/.config
+    - ~/projects
+
+- clean: ["~"]
+
+- link:
+    ~/.tmux.conf: tmux/tmux.conf
+    ~/.config/nvim: nvim
+    ~/projects/docker: docker
+    ~/.on-my-zsh: zsh/on-my-zsh
+    ~/.zshrc: zsh/.zshrc
