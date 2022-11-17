@@ -10,9 +10,15 @@
 
 - clean: ["~"]
 
+- shell:
+    - [git submodule update --init --recursive, Installing submodules]
+
 - link:
     ~/.tmux.conf: tmux/tmux.conf
     ~/.config/nvim: nvim
-    ~/projects/docker: docker
+    ~/projects/services: docker
     ~/.on-my-zsh: zsh/on-my-zsh
     ~/.zshrc: zsh/.zshrc
+
+- shell:
+    - command: '[ -e /etc/hosts ] || sudo ln -s "$PWD/hosts/hosts" /etc/hosts'
