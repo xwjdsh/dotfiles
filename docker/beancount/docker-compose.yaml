@@ -11,3 +11,11 @@ services:
       - ./data:/bean
     environment:
       BEANCOUNT_FILE: /bean/main.bean
+  cron:
+    image: beancount-cron
+    build:
+      context: .
+      dockerfile: price.Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./data/price:/root/price
