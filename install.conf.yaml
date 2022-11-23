@@ -19,9 +19,10 @@
     ~/.config/nvim: nvim
     ~/.on-my-zsh: zsh/on-my-zsh
     ~/.zshrc: zsh/.zshrc
+    ~/.gitconfig: git/.gitconfig
     ~/projects/services: docker
     ~/projects/services/beancount/data: data/secret/beancount
-    ~/.config/skm: data/secret/ssh_keys
+    ~/.skm: data/secret/ssh_keys
     ~/.config/github-copilot: data/secret/github-copilot
 
 - shell:
