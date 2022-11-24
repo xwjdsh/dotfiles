@@ -73,7 +73,10 @@ ZSH_THEME="kolo"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found sudo zsh-syntax-highlighting z)
+plugins=(git command-not-found sudo zsh-syntax-highlighting z ssh-agent golang)
+
+# ssh-agent plugin
+zstyle :omz:plugins:ssh-agent identities personal/id_rsa work/id_ed25519
 
 source $ZSH/oh-my-zsh.sh
 

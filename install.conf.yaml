@@ -4,15 +4,10 @@
       relink: true
 
 - create:
-    - ~/.ssh
     - ~/.config
     - ~/projects
 
 - clean: ["~"]
-
-- shell:
-    - [git submodule update --init --recursive, Installing submodules]
-    - [cd data && git crypt unlock]
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf
@@ -21,9 +16,10 @@
     ~/.zshrc: zsh/.zshrc
     ~/.gitconfig: git/.gitconfig
     ~/projects/services: docker
+
     ~/projects/services/beancount/data: data/secret/beancount
-    ~/.skm: data/secret/ssh_keys
+    ~/.ssh: data/secret/ssh
     ~/.config/github-copilot: data/secret/github-copilot
 
 - shell:
-    - command: '[ -e /etc/hosts ] || sudo ln -s "$PWD/hosts/hosts" /etc/hosts'
+    - command: '[[ -e /etc/hosts ]] || sudo ln -s "$PWD/hosts/hosts" /etc/hosts'
