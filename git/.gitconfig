@@ -6,3 +6,5 @@
 	program = /usr/local/bin/gpg
 [commit]
 	gpgsign = true
+[tag]
+	gpgsign = true
