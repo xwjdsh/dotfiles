@@ -8,3 +8,21 @@
 	gpgsign = true
 [tag]
 	gpgsign = true
+
+# git-delta config
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    syntax-theme = Solarized (dark)
+    navigate = true    # use n and N to move between diff sections
+    side-by-side = true
+
+[merge]
+    conflictstyle = diff3
+
+[diff]
+    colorMoved = default
