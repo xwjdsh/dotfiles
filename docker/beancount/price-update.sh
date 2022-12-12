@@ -12,10 +12,12 @@ update_file()
 
   FILE=$1
   NEW_VALUE=$2
-  OLD_VALUE=$(tail -1 $FILE)
-  if [ "$NEW_VALUE" != "$OLD_VALUE" ]; then
-    echo "$NEW_VALUE" >> $FILE
+  NEW_VALUE_DATE=$(echo $NEW_VALUE | awk '{print $1}')
+  OLD_VALUE_DATE=$(tail -1 $FILE | awk '{print $1}')
+  if [ "$NEW_VALUE_DATE" == "$OLD_VALUE_DATE" ]; then
+    head -n -1 $FILE > temp.txt ; mv temp.txt $FILE
   fi
+  echo "$NEW_VALUE" >> $FILE
 }
 
 case $1 in
