@@ -41,4 +41,8 @@ return require('packer').startup(function()
 
   use {'folke/which-key.nvim'}
 
+  use { 'junegunn/fzf', run = ":call fzf#install()" }
+  use { 'junegunn/fzf.vim' }
+  use { 'antoinemadec/coc-fzf' }
+
 end)
