@@ -45,7 +45,16 @@ services:
       - "9091:9091"
     depends_on:
       - "etcd"
-      - "minio"
+
+  attu:
+    container_name: milvus-attu
+    image: zilliz/attu:latest
+    environment:
+      MILVUS_URL: standalone:19530
+    ports:
+      - "3000:3000"
+    depends_on:
+      - "standalone"
 
 networks:
   default:
