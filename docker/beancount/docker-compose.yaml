@@ -3,6 +3,7 @@ version: "3.1"
 services:
   fava:
     image: beancount-fava
+    container_name: beancount-fava
     build: .
     restart: always
     ports:
@@ -13,6 +14,7 @@ services:
       BEANCOUNT_FILE: /bean/main.bean
   cron:
     image: beancount-cron
+    container_name: beancount-cron
     build:
       context: .
       dockerfile: price.Dockerfile

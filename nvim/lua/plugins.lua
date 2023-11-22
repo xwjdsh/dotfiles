@@ -11,7 +11,7 @@ return require('packer').startup(function()
   -- colorscheme
   use {'catppuccin/nvim', as = "catppuccin"}
 
-  use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'kyazdani42/nvim-web-devicons'}
+  use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
   use {
         'nvim-treesitter/nvim-treesitter',
         run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,

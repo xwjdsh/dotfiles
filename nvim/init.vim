@@ -2,7 +2,7 @@
 lua require('basic')
 " coc && extensions
 lua require('coc')
-let g:coc_global_extensions = ['coc-go', 'coc-git', 'coc-prettier']
+let g:coc_global_extensions = ['coc-go', 'coc-git', 'coc-prettier', 'coc-pyright']
 " keymap
 lua require('keybindings')
 " packer plugins
