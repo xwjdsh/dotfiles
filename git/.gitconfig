@@ -2,8 +2,6 @@
 	name = Wen Sun
 	email = iwendellsun@gmail.com
 	signingkey = C1231D5B4615398A
-[gpg]
-	program = /usr/local/bin/gpg
 [commit]
 	gpgsign = true
 [tag]
