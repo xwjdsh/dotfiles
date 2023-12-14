@@ -11,7 +11,8 @@
 
 - shell:
     - brew install --cask git-credential-manager
-    - brew install fzf nvim bat fd tmux go node stats git-delta git-extras git-crypt gpg htop gh lazygit lazydocker rclone glow
+    - brew install fzf nvim bat fd tmux stats git-delta git-extras git-crypt gpg htop gh lazygit lazydocker rclone glow
+    - brew install go node gopls
     - brew install pinentry-mac # prompt enter gpg passphrase when required
     - brew install --cask hiddenbar
     - brew tap homebrew/cask-fonts && brew install font-hack-nerd-font
