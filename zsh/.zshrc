@@ -72,7 +72,7 @@ ZSH_THEME="kolo"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found sudo zsh-syntax-highlighting z ssh-agent golang fzf)
+plugins=(git command-not-found sudo zsh-syntax-highlighting z ssh-agent golang fzf zsh-autosuggestions extract git-open)
 
 # ssh-agent plugin
 zstyle :omz:plugins:ssh-agent identities personal/id_ed25519 work/id_ed25519
@@ -107,6 +107,12 @@ source $ZSH/oh-my-zsh.sh
 
 alias vim="nvim"
 alias vi="nvim"
+
+alias ls='lsd'
+alias l='ls -l'
+alias la='ls -a'
+alias lla='ls -la'
+alias lt='ls --tree'
 
 # fix 'gpg: signing failed: Inappropriate ioctl for device'
 export GPG_TTY=$(tty)
