@@ -40,3 +40,6 @@ lua require('plugins.lualine')
 lua require('plugins.nvim-autopairs')
 lua require('plugins.neoscroll')
 lua require('plugins.toggleterm')
+
+" coc-go
+autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')

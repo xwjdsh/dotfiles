@@ -1,0 +1,8 @@
+version: '3.9'
+
+services:
+  cloudflared:
+    container_name: cloudflared
+    image: cloudflare/cloudflared:latest
+    restart: always
+    command: tunnel --no-autoupdate run --token ${TOKEN}

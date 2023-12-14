@@ -1,0 +1,42 @@
+version: "3"
+
+services:
+  chatgpt-web-share:
+    image: ghcr.io/chatpire/chatgpt-web-share:latest
+    container_name: cws
+    restart: unless-stopped
+    ports:
+      - 8080:80
+    volumes:
+      - ./data:/app/backend/data
+    environment:
+      - TZ=${TZ}
+      - CWS_CONFIG_DIR=/app/backend/data/config
+    depends_on:
+      - mongo
+
+  mongo:
+    container_name: mongo
+    image: mongo:6.0
+    restart: always
+    # ports:
+    #   - 27017:27017
+    volumes:
+      - ./mongo_data:/data/db
+    environment:
+      MONGO_INITDB_DATABASE: ${MONGO_INITDB_DATABASE}
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_INITDB_ROOT_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_INITDB_ROOT_PASSWORD}
+
+  ninja:
+    image: ghcr.io/gngpp/ninja:latest
+    container_name: ninja
+    restart: unless-stopped
+    command: run --disable-webui
+    # ports:
+    #   - "7999:7999"
+    environment:
+      - TZ=Asia/Tokyo
+    volumes:
+      - "./har/gpt3:/root/.gpt3"
+      - "./har/gpt4:/root/.gpt4"

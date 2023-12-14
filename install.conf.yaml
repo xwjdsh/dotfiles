@@ -9,7 +9,7 @@
 - clean: ["~"]
 
 - shell:
-    - brew install fzf nvim bat tmux go node stats git-delta git-extras git-crypt gpg
+    - brew install fzf nvim bat tmux go node stats git-delta git-extras git-crypt gpg htop
     - brew install --cask hiddenbar
     - brew tap homebrew/cask-fonts && brew install font-hack-nerd-font
     - curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh # on-my-zsh
