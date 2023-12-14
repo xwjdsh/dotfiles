@@ -5,17 +5,20 @@
 
 - create:
     - ~/.config
+    - ~/.gnupg
 
 - clean: ["~"]
 
 - shell:
+    - brew install --cask git-credential-manager
     - brew install fzf nvim bat tmux go node stats git-delta git-extras git-crypt gpg htop
+    - brew install pinentry-mac # prompt enter gpg passphrase when required
     - brew install --cask hiddenbar
     - brew tap homebrew/cask-fonts && brew install font-hack-nerd-font
     - curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh # on-my-zsh
     - TARGET_DIR=$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting; git clone git@github.com:zsh-users/zsh-syntax-highlighting.git "$TARGET_DIR" 2> /dev/null || git -C "$TARGET_DIR" pull #zsh-syntax-highlighting
     - curl -fLo nvim/pm/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim # vim-plug
-    - TARGET_DIR=$HOME/.tmux/plugins/tpm; git clone git@github.com:tmux-plugins/tpm.git "$TARGET_DIR" 2> /dev/null || git -C "TARGET_DIR" pull # tmux tpm
+    - TARGET_DIR=$HOME/.tmux/plugins/tpm; git clone git@github.com:tmux-plugins/tpm.git "$TARGET_DIR" 2> /dev/null || git -C "$TARGET_DIR" pull # tmux tpm
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf
@@ -23,3 +26,4 @@
     ~/.zshrc: zsh/.zshrc
     ~/.gitconfig: git/.gitconfig
     ~/docker: docker
+    ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
