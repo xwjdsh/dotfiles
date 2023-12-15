@@ -30,3 +30,4 @@
     ~/.gitconfig: git/.gitconfig
     ~/docker: docker
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf
+    ~/icloud: "~/Library/Mobile Documents/com~apple~CloudDocs"

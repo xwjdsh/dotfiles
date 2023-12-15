@@ -114,6 +114,8 @@ alias la='ls -a'
 alias lla='ls -la'
 alias lt='ls --tree'
 
+alias gs='git status'
+
 # fix 'gpg: signing failed: Inappropriate ioctl for device'
 export GPG_TTY=$(tty)
 
