@@ -1,8 +1,5 @@
 " basic
 lua require('basic')
-" coc && extensions
-lua require('coc')
-let g:coc_global_extensions = ['coc-go', 'coc-git', 'coc-prettier', 'coc-pyright']
 " keymap
 lua require('keybindings')
 
@@ -41,5 +38,9 @@ lua require('plugins.nvim-autopairs')
 lua require('plugins.neoscroll')
 lua require('plugins.toggleterm')
 
+" coc extensions
+let g:coc_global_extensions = ['coc-go', 'coc-git', 'coc-prettier', 'coc-pyright', '@yaegassy/coc-ruff']
 " coc-go
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
+" coc-pyright
+autocmd BufWrite *.py :silent call CocAction('runCommand', 'python.sortImports')

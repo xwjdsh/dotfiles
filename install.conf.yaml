@@ -12,9 +12,9 @@
 - shell:
     - brew install --cask git-credential-manager
     - brew install fzf nvim bat fd tmux stats git-delta git-extras git-crypt gpg htop gh lazygit lazydocker rclone glow jq
-    - brew install go node gopls
+    - brew install go node gopls ruff
     - brew install pinentry-mac # prompt enter gpg passphrase when required
-    - brew install --cask hiddenbar
+    - brew install --cask hiddenbar numi
     - brew tap homebrew/cask-fonts && brew install font-hack-nerd-font
     - curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh # on-my-zsh
     - TARGET_DIR=$HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting; git clone git@github.com:zsh-users/zsh-syntax-highlighting.git "$TARGET_DIR" 2> /dev/null || git -C "$TARGET_DIR" pull # zsh-syntax-highlighting
