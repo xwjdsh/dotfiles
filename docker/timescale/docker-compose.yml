@@ -1,0 +1,14 @@
+version: '3'
+services:
+  timescaledb:
+    container_name: timescaledb
+    image: timescale/timescaledb-ha:pg14-latest
+    ports:
+      - "5439:5432"
+    volumes:
+      - db_data:/home/postgres/pgdata/data
+    environment:
+      POSTGRES_PASSWORD: $POSTGRES_PASSWORD
+
+volumes:
+  db_data:
