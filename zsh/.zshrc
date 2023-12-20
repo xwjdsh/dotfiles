@@ -77,6 +77,8 @@ plugins=(git command-not-found sudo zsh-syntax-highlighting z ssh-agent golang f
 # ssh-agent plugin
 zstyle :omz:plugins:ssh-agent identities personal/id_ed25519 work/id_ed25519
 
+source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
