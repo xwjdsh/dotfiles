@@ -1,35 +1,35 @@
 [user]
-	name = Wen Sun
-	email = iwendellsun@gmail.com
-	signingkey = C1231D5B4615398A
+  name = Wen Sun
+  email = iwendellsun@gmail.com
+  signingkey = C1231D5B4615398A
 [commit]
-	gpgsign = true
+  gpgsign = true
 [tag]
-	gpgsign = true
+  gpgsign = true
 
 # git-delta config
 [core]
-    pager = delta
-
+  pager = delta
+  editor = vim
 [interactive]
-    diffFilter = delta --color-only
+  diffFilter = delta --color-only
 
 [delta]
-    syntax-theme = Solarized (dark)
-    navigate = true    # use n and N to move between diff sections
-    side-by-side = true
-
+  syntax-theme = Solarized (dark)
+  navigate = true    # use n and N to move between diff sections
+  side-by-side = true
 [merge]
-    conflictstyle = diff3
-
+  conflictstyle = diff3
 [diff]
-    colorMoved = default
-    wsErrorHighlight = all
+  colorMoved = default
+  wsErrorHighlight = all
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
 
 [url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
+  insteadOf = https://github.com/
+[log]
+  showSignature = true
