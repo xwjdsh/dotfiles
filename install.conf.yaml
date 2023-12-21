@@ -11,7 +11,7 @@
 
 - shell:
     - 
-      command: brew install fzf nvim bat fd tmux tpm git-delta git-extras git-crypt gpg htop gh lazygit lazydocker rclone glow jq 
+      command: brew install fzf nvim bat fd tmux tpm git-delta git-extras git-crypt gpg htop gh lazygit lazydocker rclone glow jq hugo
       stdout: true
       stderr: true
     - 
@@ -27,7 +27,7 @@
       stdout: true
       stderr: true
     - 
-      command: brew install --cask git-credential-manager visual-studio-code proxyman tailscale codewhisperer cloudflare-warp stats orbstack sequel-ace github iterm2
+      command: brew install --cask git-credential-manager visual-studio-code proxyman tailscale codewhisperer cloudflare-warp stats orbstack sequel-ace fork iterm2
       stdout: true
       stderr: true
     - 
