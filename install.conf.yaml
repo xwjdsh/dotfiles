@@ -31,7 +31,7 @@
       stdout: true
       stderr: true
     - 
-      command: brew install --cask hiddenbar numi menubarx google-drive telegram google-chrome raycast spotify bing-wallpaper obsidian wechat webull
+      command: brew install --cask hiddenbar numi menubarx google-drive telegram google-chrome raycast spotify bing-wallpaper obsidian wechat webull insomnia betterdisplay
       stdout: true
       stderr: true
     - 
