@@ -1,0 +1,11 @@
+version: "3.9"
+
+services:
+  shadowsocks:
+    image: shadowsocks/shadowsocks-libev
+    ports:
+      - "${PORT}:8388"
+    environment:
+      - METHOD=${METHOD}
+      - PASSWORD=${PASSWORD}
+    restart: always

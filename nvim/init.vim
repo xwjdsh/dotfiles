@@ -39,7 +39,7 @@ lua require('plugins.neoscroll')
 lua require('plugins.toggleterm')
 
 " coc extensions
-let g:coc_global_extensions = ['coc-go', 'coc-git', 'coc-prettier', 'coc-pyright', '@yaegassy/coc-ruff']
+let g:coc_global_extensions = ['coc-go', 'coc-git', 'coc-prettier', 'coc-pyright', '@yaegassy/coc-ruff', 'coc-json', 'coc-yaml']
 " coc-go
 autocmd BufWritePre *.go :silent call CocAction('runCommand', 'editor.action.organizeImport')
 " coc-pyright

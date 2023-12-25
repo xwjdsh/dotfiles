@@ -12,6 +12,9 @@
   "[markdown]": {
     "coc.preferences.formatOnSave": true
   },
+  "[yaml]": {
+    "coc.preferences.formatOnSave": true
+  },
   "ruff.autoFixOnSave": true,
   "python.formatting.provider": "ruff",
   "python.linting.ruffEnabled": true,
