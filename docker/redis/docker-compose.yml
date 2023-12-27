@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   redis:
@@ -6,9 +6,9 @@ services:
     image: redis
     restart: always
     ports:
-      - 6379:6379
+      - ${PORT}:6379
     volumes:
-      - redis_data:/data
+      - data:/data
 
 volumes:
-  redis_data:
+  data:

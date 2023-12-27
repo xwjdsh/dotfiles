@@ -6,6 +6,9 @@ services:
     container_name: nginx
     restart: always
     ports:
-      - 80:80
+      - ${PORT}:80
     volumes:
-      - ./conf:/etc/nginx/conf.d
+      - data_conf:/etc/nginx/conf.d
+
+volumes:
+  data_conf:
