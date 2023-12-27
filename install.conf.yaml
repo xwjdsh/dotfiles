@@ -10,44 +10,37 @@
 - clean: ["~"]
 
 - shell:
-    - 
-      command: brew install fzf nvim bat fd tmux tpm git-delta git-extras git-crypt gpg htop gh lazygit lazydocker rclone glow jq hugo
+    - command: brew install fzf nvim bat fd tmux tpm git-delta git-extras git-crypt gpg htop gh lazygit lazydocker rclone glow jq hugo ag
       stdout: true
       stderr: true
-    - 
-      command: brew install zsh-syntax-highlighting zsh-autosuggestions
+    - command: brew install zsh-syntax-highlighting zsh-autosuggestions
       stdout: true
       stderr: true
-    - 
-      command: brew install go node gopls ruff
+    - command: brew install go node gopls ruff pyenv
       stdout: true
       stderr: true
-    - 
-      command: brew install pinentry-mac # prompt enter gpg passphrase when required
+    - command: brew install pinentry-mac # prompt enter gpg passphrase when required
       stdout: true
       stderr: true
-    - 
-      command: brew install --cask git-credential-manager visual-studio-code proxyman tailscale codewhisperer cloudflare-warp stats orbstack sequel-ace fork iterm2
+    - command: brew install reattach-to-user-namespace # fix tmux copy-paste
       stdout: true
       stderr: true
-    - 
-      command: brew install --cask hiddenbar numi menubarx google-drive telegram google-chrome raycast spotify bing-wallpaper obsidian wechat webull insomnia betterdisplay
+    - command: brew install --cask git-credential-manager visual-studio-code proxyman tailscale codewhisperer cloudflare-warp stats orbstack sequel-ace fork iterm2
       stdout: true
       stderr: true
-    - 
-      command: brew tap homebrew/cask-fonts && brew install font-hack-nerd-font
+    - command: brew install --cask hiddenbar numi menubarx google-drive telegram google-chrome raycast spotify bing-wallpaper obsidian wechat webull insomnia
       stdout: true
       stderr: true
-    - 
-      command: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh # on-my-zsh
+    - command: brew tap homebrew/cask-fonts && brew install font-hack-nerd-font
+      stdout: true
+      stderr: true
+    - command: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh # on-my-zsh
       # stdout: true
       # stderr: true
-    -
-      command: TARGET_DIR=$HOME/.oh-my-zsh/custom/plugins/git-open; git clone git@github.com:paulirish/git-open.git "$TARGET_DIR" 2> /dev/null || git -C "$TARGET_DIR" pull # git-open
+    - command: TARGET_DIR=$HOME/.oh-my-zsh/custom/plugins/git-open; git clone git@github.com:paulirish/git-open.git "$TARGET_DIR" 2> /dev/null || git -C "$TARGET_DIR" pull # git-open
       # stdout: true
       # stderr: true
-    - 
-      command: curl -fLo nvim/pm/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim # vim-plug
+    - command: curl -fLo nvim/pm/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim # vim-plug
       # stdout: true
       # stderr: true
 
