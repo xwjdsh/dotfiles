@@ -1,0 +1,12 @@
+version: "3"
+services:
+  memos:
+    image: ghcr.io/usememos/memos:latest
+    container_name: memos
+    ports:
+      - ${PORT}:5230
+    volumes:
+      - data:/var/opt/memos
+
+volumes:
+  data:
