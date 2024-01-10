@@ -3,6 +3,7 @@ version: "3.9"
 services:
   shadowsocks:
     image: shadowsocks/shadowsocks-libev
+    container_name: ss
     ports:
       - "${PORT}:8388"
     environment:
