@@ -121,6 +121,9 @@ alias gs='git status'
 # fix 'gpg: signing failed: Inappropriate ioctl for device'
 export GPG_TTY=$(tty)
 
+export GOPATH="$HOME/go"
+export PATH="$GOPATH/bin:$PATH"
+
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
