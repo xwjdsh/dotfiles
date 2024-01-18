@@ -10,7 +10,7 @@
 - clean: ["~"]
 
 - shell:
-    - command: brew install fzf nvim bat fd tmux tpm git-delta git-extras git-crypt gpg htop gh lazygit lazydocker rclone glow jq hugo ag sing-box iredis
+    - command: brew install fzf nvim bat fd tmux tpm git-delta git-extras git-crypt gpg htop gh lazygit lazydocker rclone glow jq hugo ag sing-box iredis yazi
       stdout: true
       stderr: true
     - command: brew install zsh-syntax-highlighting zsh-autosuggestions
@@ -25,10 +25,10 @@
     - command: brew install reattach-to-user-namespace # fix tmux copy-paste
       stdout: true
       stderr: true
-    - command: brew install --cask git-credential-manager visual-studio-code proxyman tailscale codewhisperer cloudflare-warp stats orbstack sequel-ace fork iterm2 sfm db-browser-for-sqlite
+    - command: brew install --cask git-credential-manager visual-studio-code proxyman tailscale codewhisperer cloudflare-warp stats orbstack sequel-ace fork iterm2 sfm dbeaver-community
       stdout: true
       stderr: true
-    - command: brew install --cask hiddenbar numi menubarx google-drive telegram google-chrome raycast spotify bing-wallpaper obsidian wechat webull insomnia
+    - command: brew install --cask hiddenbar numi menubarx google-drive telegram google-chrome raycast spotify bing-wallpaper obsidian wechat webull insomnia whatsapp
       stdout: true
       stderr: true
     - command: brew tap homebrew/cask-fonts && brew install font-hack-nerd-font
