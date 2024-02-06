@@ -17,7 +17,7 @@
     - command: brew install zsh-syntax-highlighting zsh-autosuggestions
       stdout: true
       stderr: true
-    - command: brew install go node gopls ruff prettier pyenv
+    - command: brew install go node gopls ruff prettier pyenv corepack
       stdout: true
       stderr: true
     - command: brew install pinentry-mac # prompt enter gpg passphrase when required
@@ -45,6 +45,7 @@
       # stdout: true
       # stderr: true
     - command: go install golang.org/x/tools/cmd/goimports@latest
+    - command: go install github.com/cosmtrek/air@latest
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf
