@@ -75,7 +75,7 @@ ZSH_THEME="kolo"
 plugins=(git command-not-found sudo zsh-syntax-highlighting z ssh-agent golang fzf zsh-autosuggestions extract git-open)
 
 # ssh-agent plugin
-zstyle :omz:plugins:ssh-agent identities personal/id_ed25519 work/id_ed25519
+zstyle :omz:plugins:ssh-agent identities personal/id_ed25519 personal_rsa/id_rsa work/id_ed25519
 
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
