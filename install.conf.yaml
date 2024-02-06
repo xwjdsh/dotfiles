@@ -5,6 +5,7 @@
 
 - create:
     - ~/.config/tmux-powerline
+    - ~/.config/zed
     - ~/.gnupg
 
 - clean: ["~"]
@@ -16,7 +17,7 @@
     - command: brew install zsh-syntax-highlighting zsh-autosuggestions
       stdout: true
       stderr: true
-    - command: brew install go node gopls ruff pyenv
+    - command: brew install go node gopls ruff prettier pyenv
       stdout: true
       stderr: true
     - command: brew install pinentry-mac # prompt enter gpg passphrase when required
@@ -25,7 +26,7 @@
     - command: brew install reattach-to-user-namespace # fix tmux copy-paste
       stdout: true
       stderr: true
-    - command: brew install --cask git-credential-manager visual-studio-code proxyman tailscale codewhisperer cloudflare-warp stats orbstack sequel-ace fork iterm2 sfm dbeaver-community rapidapi redisinsight
+    - command: brew install --cask git-credential-manager visual-studio-code zed proxyman tailscale codewhisperer cloudflare-warp stats orbstack sequel-ace fork iterm2 sfm dbeaver-community rapidapi redisinsight
       stdout: true
       stderr: true
     - command: brew install --cask hiddenbar numi menubarx google-drive telegram google-chrome raycast spotify bing-wallpaper obsidian wechat webull whatsapp lark feishu eudic snipaste
@@ -43,10 +44,12 @@
     - command: curl -fLo nvim/pm/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim # vim-plug
       # stdout: true
       # stderr: true
+    - command: go install golang.org/x/tools/cmd/goimports@latest
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf
     ~/.config/nvim: nvim
+    ~/.config/zed/settings.json: zed/settings.json
     ~/.zshrc: zsh/.zshrc
     ~/.gitconfig: git/.gitconfig
     ~/docker: docker
