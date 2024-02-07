@@ -17,7 +17,10 @@
     - command: brew install zsh-syntax-highlighting zsh-autosuggestions
       stdout: true
       stderr: true
-    - command: brew install go node gopls ruff prettier pyenv corepack
+    - command: brew install go node rust pyenv corepack # dev tools
+      stdout: true
+      stderr: true
+    - command: stylua rustfmt ruff prettier taplo # formatter
       stdout: true
       stderr: true
     - command: brew install pinentry-mac # prompt enter gpg passphrase when required
