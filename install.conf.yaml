@@ -20,7 +20,7 @@
     - command: brew install go node rust pyenv corepack # dev tools
       stdout: true
       stderr: true
-    - command: stylua rustfmt ruff prettier taplo # formatter
+    - command: brew install stylua rustfmt ruff prettier taplo # formatter
       stdout: true
       stderr: true
     - command: brew install pinentry-mac # prompt enter gpg passphrase when required
