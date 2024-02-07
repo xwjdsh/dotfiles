@@ -121,8 +121,11 @@ alias gs='git status'
 # fix 'gpg: signing failed: Inappropriate ioctl for device'
 export GPG_TTY=$(tty)
 
+
 export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
+export MASON_PATH="$HOME/.local/share/nvim/mason"
+
+export PATH="$GOPATH/bin:$MASON_PATH/bin:$PATH"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"
