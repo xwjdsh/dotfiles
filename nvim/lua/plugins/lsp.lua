@@ -1,7 +1,7 @@
 require("mason").setup()
 require("mason-lspconfig").setup({
-	ensure_installed = { "lua_ls", "rust_analyzer", "gopls", "pyright", "ruff_lsp" },
-	automatic_installation = false,
+	-- use external lsp
+	ensure_installed = {},
 })
 
 -- Set up lspconfig.

@@ -20,6 +20,9 @@
     - command: brew install go node rust pyenv corepack # dev tools
       stdout: true
       stderr: true
+    - command: brew install pyright lua-language-server rust-analyzer gopls # lsp
+      stdout: true
+      stderr: true
     - command: brew install stylua rustfmt ruff prettier taplo # formatter
       stdout: true
       stderr: true

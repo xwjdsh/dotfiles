@@ -123,9 +123,7 @@ export GPG_TTY=$(tty)
 
 
 export GOPATH="$HOME/go"
-export MASON_PATH="$HOME/.local/share/nvim/mason"
-
-export PATH="$GOPATH/bin:$MASON_PATH/bin:$PATH"
+export PATH="$GOPATH/bin:$PATH"
 
 # pyenv
 export PYENV_ROOT="$HOME/.pyenv"

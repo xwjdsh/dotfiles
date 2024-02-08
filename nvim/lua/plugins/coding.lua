@@ -62,7 +62,6 @@ require("go").setup()
 
 -- nvim-treesitter
 require("nvim-treesitter.configs").setup({
-
 	ensure_installed = {
 		"html",
 		"css",
@@ -75,6 +74,7 @@ require("nvim-treesitter.configs").setup({
 		"yaml",
 		"json",
 		"vimdoc",
+		"python",
 	},
 	highlight = {
 		enable = true,
