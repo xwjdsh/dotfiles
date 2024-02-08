@@ -1,9 +1,8 @@
 vim.opt.termguicolors = true
 require("bufferline").setup({
-	highlights = require("catppuccin.groups.integrations.bufferline").get(),
 	options = {
 		indicator = {
-			icon = "🌈",
+			icon = "🐱",
 			style = "icon",
 		},
 		offsets = {
@@ -18,17 +17,22 @@ require("bufferline").setup({
 	},
 })
 
-require("catppuccin").setup({
-	flavour = "mocha", -- latte, frappe, macchiato, mocha
-	transparent_background = true,
+require("tokyonight").setup({
+	style = "moon",
+	transparent = true,
+	transparent_sidebar = true,
+	styles = {
+		sidebars = "transparent",
+		floats = "transparent",
+	},
 })
 -- color schema
-vim.cmd([[colorscheme catppuccin]])
+vim.cmd([[colorscheme tokyonight]])
 
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
-		theme = "catppuccin",
+		theme = "tokyonight",
 		component_separators = { left = "", right = "" },
 		section_separators = { left = "", right = "" },
 		disabled_filetypes = {},

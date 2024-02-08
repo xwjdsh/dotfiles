@@ -28,9 +28,9 @@ Plug("williamboman/mason-lspconfig.nvim")
 Plug("neovim/nvim-lspconfig")
 
 -- ui
+Plug("folke/tokyonight.nvim")
 Plug("nvim-tree/nvim-web-devicons")
 Plug("nvim-tree/nvim-tree.lua")
-Plug("catppuccin/nvim", { ["as"] = "catppuccin" })
 Plug("akinsho/bufferline.nvim")
 Plug("nvim-lualine/lualine.nvim")
 Plug("echasnovski/mini.indentscope")
@@ -47,6 +47,7 @@ Plug("karb94/neoscroll.nvim")
 Plug("akinsho/toggleterm.nvim")
 Plug("junegunn/fzf.vim")
 Plug("stevearc/aerial.nvim")
+Plug("folke/flash.nvim")
 
 vim.call("plug#end")
 
