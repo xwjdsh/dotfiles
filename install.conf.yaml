@@ -47,9 +47,6 @@
     - command: TARGET_DIR=$HOME/.oh-my-zsh/custom/plugins/git-open; git clone git@github.com:paulirish/git-open.git "$TARGET_DIR" 2> /dev/null || git -C "$TARGET_DIR" pull # git-open
       # stdout: true
       # stderr: true
-    - command: curl -fLo nvim/pm/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim # vim-plug
-      # stdout: true
-      # stderr: true
     - command: go install golang.org/x/tools/cmd/goimports@latest
     - command: go install github.com/cosmtrek/air@latest
 

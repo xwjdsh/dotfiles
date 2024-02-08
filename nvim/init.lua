@@ -3,6 +3,19 @@ require("basic")
 -- keymap
 require("keybindings")
 
+local data_dir = vim.fn.stdpath("data")
+local plug_file = data_dir .. "/site/autoload/plug.vim"
+
+if vim.fn.empty(vim.fn.glob(plug_file)) > 0 then
+	vim.fn.system({
+		"curl",
+		"-fLo",
+		plug_file,
+		"--create-dirs",
+		"https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim",
+	})
+end
+
 local vim = vim
 local Plug = vim.fn["plug#"]
 
