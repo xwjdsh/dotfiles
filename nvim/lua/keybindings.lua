@@ -36,23 +36,3 @@ map("n", "so", "<C-w>o", opt) -- close others
 
 -- 窗口跳转
 map("n", "<leader>w", "<C-w>w", opt)
-
--- plugins
--- nvim-tree 打开/关闭
-map("n", "<leader>f", ":NvimTreeToggle<CR>", opt)
-
--- nvim-treesitter 代码格式化
-map("n", "<leader>i", "gg=G", opt)
-
--- bufferline
-map("n", "<C-h>", ":BufferLineCyclePrev<CR>", opt)
-map("n", "<C-l>", ":BufferLineCycleNext<CR>", opt)
-map("n", "<C-x>", ":BufferLinePickClose<CR>", opt)
-map("n", "<leader>bgt", ":BufferLineGroupToggle ", { silent = false, nowait = true })
-map("n", "<leader>bgc", ":BufferLineGroupClose ", { silent = false, nowait = true })
-
--- fzf-lua
-map("n", "<c-p>", ":FzfLua files<CR>", opt)
-map("n", "<c-g>", ":FzfLua grep<CR>", opt)
-map("n", "<leader>l", ":FzfLua buffers<CR>", opt)
-map("n", "<leader>g", ":FzfLua git_status<CR>", opt)
