@@ -38,7 +38,7 @@ Plug("echasnovski/mini.indentscope")
 -- format
 Plug("mhartington/formatter.nvim")
 
--- util
+-- editor
 Plug("windwp/nvim-autopairs")
 Plug("numToStr/Comment.nvim")
 Plug("ibhagwan/fzf-lua", { ["branch"] = "main" })
@@ -46,6 +46,7 @@ Plug("github/copilot.vim")
 Plug("karb94/neoscroll.nvim")
 Plug("akinsho/toggleterm.nvim")
 Plug("junegunn/fzf.vim")
+Plug("stevearc/aerial.nvim")
 
 vim.call("plug#end")
 
