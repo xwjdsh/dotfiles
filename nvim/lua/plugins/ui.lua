@@ -1,3 +1,30 @@
+vim.opt.termguicolors = true
+require("bufferline").setup({
+	highlights = require("catppuccin.groups.integrations.bufferline").get(),
+	options = {
+		indicator = {
+			icon = "🌈",
+			style = "icon",
+		},
+		offsets = {
+			{
+				filetype = "NvimTree",
+				text = "File Explorer",
+				highlight = "Directory",
+				text_align = "left",
+				separator = true,
+			},
+		},
+	},
+})
+
+require("catppuccin").setup({
+	flavour = "mocha", -- latte, frappe, macchiato, mocha
+	transparent_background = true,
+})
+-- color schema
+vim.cmd([[colorscheme catppuccin]])
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -25,4 +52,9 @@ require("lualine").setup({
 	},
 	tabline = {},
 	extensions = {},
+})
+
+require("mini.indentscope").setup({
+	symbol = "│",
+	options = { try_as_border = true },
 })

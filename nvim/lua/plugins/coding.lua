@@ -5,8 +5,8 @@ cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
-			vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-			-- require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
+			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
 			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
 			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
@@ -55,4 +55,29 @@ cmp.setup.cmdline(":", {
 	}, {
 		{ name = "cmdline" },
 	}),
+})
+
+-- go.nvim
+require("go").setup()
+
+-- nvim-treesitter
+require("nvim-treesitter.configs").setup({
+
+	ensure_installed = {
+		"html",
+		"css",
+		"vim",
+		"lua",
+		"javascript",
+		"typescript",
+		"go",
+		"rust",
+		"yaml",
+		"json",
+		"vimdoc",
+	},
+	highlight = {
+		enable = true,
+		additional_vim_regex_highlighting = false,
+	},
 })
