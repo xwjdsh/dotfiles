@@ -12,7 +12,7 @@
 
 - shell:
     - command: >
-        brew install fzf nvim bat fd gpg htop lazydocker rclone glow jq hugo ag sing-box # tools
+        brew install fzf nvim bat fd gpg htop lazydocker rclone glow jq hugo ag ripgrep sing-box # tools
         iredis yazi cloudflared telnet
       stdout: true
       stderr: true

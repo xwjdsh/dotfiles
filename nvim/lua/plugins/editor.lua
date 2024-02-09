@@ -10,6 +10,7 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "kyazdani42/nvim-web-devicons" },
+		lazy = false,
 		opts = {},
 		keys = {
 			{ "<leader>f", ":NvimTreeToggle<CR>" },
@@ -30,17 +31,7 @@ return {
 	},
 	{
 		"folke/flash.nvim",
-	},
-	{
-		"ibhagwan/fzf-lua",
-		-- optional for icon support
-		dependencies = { "nvim-tree/nvim-web-devicons" },
-		keys = {
-			{ "<c-p>", ":FzfLua files<CR>" },
-			{ "<c-g>", ":FzfLua grep<CR>" },
-			{ "<leader>l", ":FzfLua buffers<CR>" },
-			{ "<leader>g", ":FzfLua git_status<CR>" },
-		},
+		opts = {},
 	},
 	{
 		"windwp/nvim-autopairs",
@@ -54,7 +45,7 @@ return {
 			conform.setup({
 				formatters_by_ft = {
 					lua = { "stylua" },
-					python = { "ruff" },
+					python = { "ruff_format" },
 					rust = { "rustfmt" },
 					javascript = { "prettier" },
 					typescript = { "prettier" },
@@ -72,5 +63,46 @@ return {
 				prepend_args = { "-local", "github.com/xwjdsh" },
 			}
 		end,
+	},
+	{
+		"lewis6991/gitsigns.nvim",
+		opts = {
+			signs = {
+				add = { text = "│" },
+				change = { text = "│" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+				untracked = { text = "┆" },
+			},
+			current_line_blame = true,
+			current_line_blame_opts = {
+				virt_text = true,
+				virt_text_pos = "eol",
+				delay = 1000,
+				ignore_whitespace = false,
+				virt_text_priority = 100,
+			},
+		},
+	},
+	{
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		opts = {
+			use_diagnostic_signs = true,
+		},
+	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {},
+	},
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		keys = {
+			{ "<c-p>", ":Telescope find_files<CR>" },
+			{ "<c-g>", ":Telescope live_grep<CR>" },
+		},
 	},
 }

@@ -73,7 +73,6 @@ return {
 	{
 		"ray-x/go.nvim",
 	},
-
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
