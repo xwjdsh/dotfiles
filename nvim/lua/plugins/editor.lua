@@ -47,4 +47,30 @@ return {
 		event = "InsertEnter",
 		opts = {},
 	},
+	{
+		"stevearc/conform.nvim",
+		config = function()
+			local conform = require("conform")
+			conform.setup({
+				formatters_by_ft = {
+					lua = { "stylua" },
+					python = { "ruff" },
+					rust = { "rustfmt" },
+					javascript = { "prettier" },
+					typescript = { "prettier" },
+					json = { "prettier" },
+					yaml = { "prettier" },
+					toml = { "taplo" },
+					go = { "goimports", "gofmt" },
+				},
+				format_on_save = {
+					timeout_ms = 500,
+					lsp_fallback = true,
+				},
+			})
+			conform.formatters.goimports = {
+				prepend_args = { "-local", "github.com/xwjdsh" },
+			}
+		end,
+	},
 }
