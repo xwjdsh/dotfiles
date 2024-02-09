@@ -89,6 +89,7 @@ return {
 				"rust",
 				"yaml",
 				"json",
+				"toml",
 				"vimdoc",
 				"python",
 			},
