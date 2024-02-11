@@ -13,7 +13,7 @@
 - shell:
     - command: >
         brew install fzf nvim bat fd gpg htop lazydocker rclone glow jq hugo ag ripgrep sing-box # tools
-        iredis yazi cloudflared telnet
+        iredis yazi cloudflared telnet lsd
       stdout: true
       stderr: true
     - command: brew install git-delta git-extras git-crypt gh lazygit # git
