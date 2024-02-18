@@ -19,7 +19,7 @@
         iredis yazi cloudflared telnet lsd
     - command: brew install git-delta git-extras git-crypt gh lazygit # git
     - command: brew install zsh-syntax-highlighting zsh-autosuggestions # zsh plugins
-    - command: brew install go node rust pyenv corepack # dev
+    - command: brew install go node rust pyenv corepack pipx # dev
     - command: brew install pyright lua-language-server rust-analyzer gopls # lsp
     - command: brew install stylua rustfmt ruff prettier taplo # formatter
     - command: brew install gpg pinentry-mac # gpg (pinentry-mac: prompt enter gpg passphrase when required)
@@ -36,6 +36,7 @@
     - command: go install github.com/cosmtrek/air@latest
     - command: go install golang.org/x/tools/cmd/deadcode@latest
     - command: npm install --g git-open
+    - command: pipx ensurepath && pipx install pdm
 
 - link:
     ~/.tmux.conf: tmux/tmux.conf

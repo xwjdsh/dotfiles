@@ -118,6 +118,9 @@ alias lt='ls --tree'
 
 alias gs='git status'
 
+alias lzd='lazydocker'
+alias lzg='lazygit'
+
 # fix 'gpg: signing failed: Inappropriate ioctl for device'
 export GPG_TTY=$(tty)
 
