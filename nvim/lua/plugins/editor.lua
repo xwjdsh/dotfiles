@@ -51,6 +51,7 @@ return {
 					typescript = { "prettier" },
 					json = { "prettier" },
 					yaml = { "prettier" },
+					markdown = { "prettier" },
 					toml = { "taplo" },
 					go = { "goimports", "gofmt" },
 				},
@@ -95,6 +96,7 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
+		lazy = false,
 		opts = {},
 	},
 	{

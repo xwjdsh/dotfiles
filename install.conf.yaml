@@ -2,6 +2,9 @@
     link:
       create: true
       relink: true
+    shell:
+      stdout: true
+      stderr: true
 
 - create:
     - ~/.config/tmux-powerline
@@ -14,45 +17,21 @@
     - command: >
         brew install fzf nvim bat fd gpg htop lazydocker rclone glow jq hugo ag ripgrep sing-box # tools
         iredis yazi cloudflared telnet lsd
-      stdout: true
-      stderr: true
     - command: brew install git-delta git-extras git-crypt gh lazygit # git
-      stdout: true
-      stderr: true
     - command: brew install zsh-syntax-highlighting zsh-autosuggestions # zsh plugins
-      stdout: true
-      stderr: true
     - command: brew install go node rust pyenv corepack # dev
-      stdout: true
-      stderr: true
     - command: brew install pyright lua-language-server rust-analyzer gopls # lsp
-      stdout: true
-      stderr: true
     - command: brew install stylua rustfmt ruff prettier taplo # formatter
-      stdout: true
-      stderr: true
     - command: brew install gpg pinentry-mac # gpg (pinentry-mac: prompt enter gpg passphrase when required)
-      stdout: true
-      stderr: true
     - command: brew install tmux tpm reattach-to-user-namespace # tmux (reattach-to-user-namespace: fix tmux copy-paste)
-      stdout: true
-      stderr: true
     - command: >
         brew install --cask git-credential-manager visual-studio-code zed proxyman tailscale codewhisperer # dev related
         cloudflare-warp stats orbstack sequel-ace fork iterm2 sfm dbeaver-community rapidapi redisinsight
-      stdout: true
-      stderr: true
     - command: >
         brew install --cask hiddenbar numi menubarx google-drive telegram google-chrome raycast spotify # apps
         bing-wallpaper obsidian wechat webull whatsapp lark feishu eudic snipaste
-      stdout: true
-      stderr: true
     - command: brew tap homebrew/cask-fonts && brew install font-hack-nerd-font # font
-      stdout: true
-      stderr: true
     - command: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh # on-my-zsh
-      # stdout: true
-      # stderr: true
     - command: go install golang.org/x/tools/cmd/goimports@latest
     - command: go install github.com/cosmtrek/air@latest
     - command: go install golang.org/x/tools/cmd/deadcode@latest
