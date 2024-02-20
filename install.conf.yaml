@@ -19,7 +19,7 @@
         brew install fzf nvim bat fd gpg htop lazydocker rclone glow jq hugo ag ripgrep sing-box
         iredis yazi cloudflared telnet lsd atuin thefuck zoxide tlrc tree gping httpie # tools
     - command: brew install git-delta git-extras git-crypt gh lazygit # git
-    - command: brew install zsh-syntax-highlighting zsh-autosuggestions # zsh plugins
+    - command: brew install zsh-syntax-highlighting zsh-autosuggestions zsh-vi-mode # zsh plugins
     - command: brew install go node rust pyenv corepack pipx # dev
     - command: brew install pyright lua-language-server rust-analyzer gopls # lsp
     - command: brew install stylua rustfmt ruff prettier taplo # formatter

@@ -79,6 +79,7 @@ zstyle :omz:plugins:ssh-agent identities personal/id_ed25519 personal_rsa/id_rsa
 
 source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $HOMEBREW_PREFIX/share/zsh-vi-mode/zsh-vi-mode.plugin.zsh
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
@@ -121,7 +122,7 @@ alias gs='git status'
 alias lzd='lazydocker'
 alias lzg='lazygit'
 
-alias ping='gping'
+alias ping='gping --clear'
 
 # fix 'gpg: signing failed: Inappropriate ioctl for device'
 export GPG_TTY=$(tty)
