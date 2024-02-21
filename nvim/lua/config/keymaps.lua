@@ -1,7 +1,5 @@
 local function map(mode, lhs, rhs, opts)
 	local modes = type(mode) == "string" and { mode } or mode
-
-	-- do not create the keymap if a lazy keys handler exists
 	if #modes > 0 then
 		opts = opts or {}
 		opts.silent = opts.silent ~= false
@@ -55,7 +53,7 @@ map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
 -- save file
-map({ "i", "x", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
+map("n", "ss", "<cmd>w<cr><esc>", { desc = "Save file" })
 
 -- better indenting
 map("v", "<", "<gv")
@@ -68,8 +66,7 @@ map("n", "<leader>l", "<cmd>Lazy<cr>", { desc = "Lazy" })
 map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 
 -- windows
-map("n", "<leader>ww", "<C-W>p", { desc = "Other window", remap = true })
-map("n", "<leader>wd", "<C-W>c", { desc = "Delete window", remap = true })
+map("n", "<leader>w", "<C-W>p", { desc = "Other window", remap = true })
 map("n", "sc", "<C-w>c", { desc = "Close current", remap = true })
 map("n", "so", "<C-w>o", { desc = "Close others", remap = true })
 map("n", "sv", ":vsp<CR>", { desc = "Split vertical", remap = true })
