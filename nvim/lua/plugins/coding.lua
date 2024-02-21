@@ -7,7 +7,6 @@ return {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
 		},
 		opts = function()
@@ -63,7 +62,7 @@ return {
 				sources = cmp.config.sources({
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" }, -- For luasnip users.
-				}, {
+					{ name = "path" },
 					{ name = "buffer" },
 				}),
 			}
@@ -75,6 +74,7 @@ return {
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
+		lazy = false,
 		build = ":TSUpdate",
 		opts = {
 			ensure_installed = {

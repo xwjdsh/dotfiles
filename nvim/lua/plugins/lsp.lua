@@ -34,7 +34,23 @@ return {
 				end,
 			})
 			lspconfig.pyright.setup({})
-			lspconfig.rust_analyzer.setup({})
+
+			local on_attach = function(client)
+				require("completion").on_attach(client)
+			end
+			lspconfig.rust_analyzer.setup({
+				on_attach = on_attach,
+				settings = {
+					["rust-analyzer"] = {
+						imports = {
+							granularity = {
+								group = "module",
+							},
+							prefix = "self",
+						},
+					},
+				},
+			})
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
