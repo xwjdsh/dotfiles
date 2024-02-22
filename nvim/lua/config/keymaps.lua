@@ -52,6 +52,9 @@ map("n", "N", "'nN'[v:searchforward].'zv'", { expr = true, desc = "Prev search r
 map("x", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 map("o", "N", "'nN'[v:searchforward]", { expr = true, desc = "Prev search result" })
 
+map("v", "<C-c>", '"+y', { desc = "Copy to system pasteboard" })
+map({ "n", "i" }, "<C-v>", '"+p', { desc = "Paste from system pasteboard" })
+
 -- save file
 map("n", "ss", "<cmd>w<cr><esc>", { desc = "Save file" })
 
