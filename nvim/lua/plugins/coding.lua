@@ -8,18 +8,38 @@ return {
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			{
+				{
+					"zbirenbaum/copilot-cmp",
+					dependencies = "copilot.lua",
+					opts = {},
+					config = function(_, opts)
+						local function lsp_on_attach(on_attach)
+							vim.api.nvim_create_autocmd("LspAttach", {
+								callback = function(args)
+									local buffer = args.buf ---@type number
+									local client = vim.lsp.get_client_by_id(args.data.client_id)
+									on_attach(client, buffer)
+								end,
+							})
+						end
+						local copilot_cmp = require("copilot_cmp")
+						copilot_cmp.setup(opts)
+						-- attach cmp source whenever copilot attaches
+						-- fixes lazy-loading issues with the copilot cmp source
+						lsp_on_attach(function(client)
+							if client.name == "copilot" then
+								copilot_cmp._on_insert_enter({})
+							end
+						end)
+					end,
+				},
+			},
 		},
 		opts = function()
 			local cmp = require("cmp")
-			-- Set configuration for specific filetype.
-			cmp.setup.filetype("gitcommit", {
-				sources = cmp.config.sources({
-					{ name = "git" }, -- You can specify the `git` source if [you were installed it](https://github.com/petertriho/cmp-git).
-				}, {
-					{ name = "buffer" },
-				}),
-			})
-
 			-- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 			cmp.setup.cmdline({ "/", "?" }, {
 				mapping = cmp.mapping.preset.cmdline(),
@@ -39,19 +59,6 @@ return {
 			})
 
 			return {
-				snippet = {
-					-- REQUIRED - you must specify a snippet engine
-					expand = function(args)
-						-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-						require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
-						-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-						-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
-					end,
-				},
-				window = {
-					-- completion = cmp.config.window.bordered(),
-					-- documentation = cmp.config.window.bordered(),
-				},
 				mapping = cmp.mapping.preset.insert({
 					["<C-b>"] = cmp.mapping.scroll_docs(-4),
 					["<C-f>"] = cmp.mapping.scroll_docs(4),
@@ -60,15 +67,17 @@ return {
 					["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" }, -- For luasnip users.
-					{ name = "path" },
-					{ name = "buffer" },
+					-- Copilot Source
+					{ name = "copilot", group_index = 2 },
+					-- Other Sources
+					{ name = "nvim_lsp", group_index = 2 },
+					{ name = "path", group_index = 2 },
+					{ name = "buffer", group_index = 2 },
+					{ name = "luasnip", group_index = 2 },
 				}),
 			}
 		end,
 	},
-
 	{
 		"ray-x/go.nvim",
 	},
@@ -91,12 +100,26 @@ return {
 				"toml",
 				"vimdoc",
 				"python",
+				"php",
 			},
 			highlight = { enable = true },
 			indent = { enable = true },
 		},
 		keys = {
 			{ "<leader>i", "gg=G" },
+		},
+	},
+	{
+		"zbirenbaum/copilot.lua",
+		cmd = "Copilot",
+		build = ":Copilot auth",
+		opts = {
+			suggestion = { enabled = false },
+			panel = { enabled = false },
+			filetypes = {
+				markdown = true,
+				help = true,
+			},
 		},
 	},
 }
