@@ -116,4 +116,8 @@ return {
 		end,
 		opts = {},
 	},
+	{
+		"akinsho/toggleterm.nvim",
+		opts = {},
+	},
 }

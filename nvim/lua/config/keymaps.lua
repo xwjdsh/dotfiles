@@ -82,3 +82,26 @@ map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
 map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
 map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
 map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
+
+function LAZYGIT_TOGGLE()
+	local Terminal = require("toggleterm.terminal").Terminal
+	local lazygit = Terminal:new({
+		cmd = "lazygit",
+		dir = "git_dir",
+		direction = "float",
+	})
+	lazygit:toggle()
+end
+
+function LAZYDOCKER_TOGGLE()
+	local Terminal = require("toggleterm.terminal").Terminal
+	local lazydocker = Terminal:new({
+		cmd = "lazydocker",
+		direction = "float",
+	})
+	lazydocker:toggle()
+end
+
+-- lazygit && lazydocker
+map("n", "<leader>gg", "<cmd>lua LAZYGIT_TOGGLE()<CR>", { desc = "lazygit", noremap = true, silent = true })
+map("n", "<leader>dd", "<cmd>lua LAZYDOCKER_TOGGLE()<CR>", { desc = "lazydocker", noremap = true, silent = true })
