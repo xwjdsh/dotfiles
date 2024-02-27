@@ -39,7 +39,7 @@ install_packages_for_darwin() {
 	brew install "${cmd_packages[@]}"
 
 	echo "[homebrew] install app packages"
-	brew install "${app_packages[@]}"
+	brew install --cask "${app_packages[@]}"
 
 }
 
@@ -80,7 +80,6 @@ if exists pipx; then
 	pipx install pdm
 fi
 
-echo "[dotfiles]"
 export DOTFILES="$HOME/.dotfiles"
 if [ -d "$DOTFILES" ]; then
 	echo "[dotfiles] have already been cloned into the home dir"
