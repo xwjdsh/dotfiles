@@ -14,31 +14,6 @@
 
 - clean: ["~"]
 
-- shell:
-    - command: >
-        brew install fzf nvim bat fd gpg htop lazydocker rclone glow jq hugo ag ripgrep sing-box
-        iredis yazi cloudflared telnet lsd atuin thefuck tlrc tree gping httpie # tools
-    - command: brew install git-delta git-extras git-crypt gh lazygit # git
-    - command: brew install zsh-syntax-highlighting zsh-autosuggestions # zsh plugins
-    - command: brew install go node rust pyenv corepack pipx # dev
-    - command: brew install pyright lua-language-server rust-analyzer gopls # lsp
-    - command: brew install stylua rustfmt ruff prettier taplo # formatter
-    - command: brew install gpg pinentry-mac # gpg (pinentry-mac: prompt enter gpg passphrase when required)
-    - command: brew install tmux tpm reattach-to-user-namespace # tmux (reattach-to-user-namespace: fix tmux copy-paste)
-    - command: >
-        brew install --cask git-credential-manager visual-studio-code zed proxyman tailscale codewhisperer 
-        cloudflare-warp stats orbstack sequel-ace fork iterm2 sfm dbeaver-community rapidapi redisinsight # dev related
-    - command: >
-        brew install --cask hiddenbar numi menubarx google-drive telegram google-chrome raycast spotify 
-        bing-wallpaper obsidian wechat webull whatsapp lark feishu eudic snipaste # apps
-    - command: brew tap homebrew/cask-fonts && brew install font-hack-nerd-font # font
-    - command: curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh # on-my-zsh
-    - command: go install golang.org/x/tools/cmd/goimports@latest
-    - command: go install github.com/cosmtrek/air@latest
-    - command: go install golang.org/x/tools/cmd/deadcode@latest
-    - command: npm install --g git-open
-    - command: pipx ensurepath && pipx install pdm
-
 - link:
     ~/.tmux.conf: tmux/tmux.conf
     ~/.config/nvim: nvim

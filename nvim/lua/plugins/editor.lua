@@ -54,6 +54,7 @@ return {
 					markdown = { "prettier" },
 					toml = { "taplo" },
 					go = { "goimports", "gofmt" },
+					sh = { "shfmt" },
 				},
 				format_on_save = {
 					timeout_ms = 500,
