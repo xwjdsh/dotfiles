@@ -72,7 +72,7 @@ ZSH_THEME="kolo"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git command-not-found sudo zsh-syntax-highlighting ssh-agent golang zsh-autosuggestions extract z)
+plugins=(git command-not-found sudo zsh-syntax-highlighting ssh-agent golang zsh-autosuggestions extract)
 
 # ssh-agent plugin
 zstyle :omz:plugins:ssh-agent identities personal/id_ed25519 personal_rsa/id_rsa work/id_ed25519
@@ -136,6 +136,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 eval "$(pyenv init -)"
 
 eval "$(atuin init zsh)"
+eval "$(zoxide init zsh)"
 
 # CodeWhisperer post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"

@@ -18,7 +18,7 @@ install_packages_for_darwin() {
 	# homebrew packages
 	cmd_packages=(
 		fzf nvim bat fd gpg htop lazydocker rclone glow jq hugo ag ripgrep sing-box
-		iredis yazi cloudflared telnet lsd atuin thefuck tlrc tree gping httpie         # tools
+		iredis yazi cloudflared telnet lsd atuin thefuck tlrc tree gping xh zoxide      # tools
 		git-delta git-extras git-crypt gh lazygit                                       # git
 		zsh-syntax-highlighting zsh-autosuggestions                                     # zsh plugins
 		go node rust pyenv corepack pipx                                                # dev
