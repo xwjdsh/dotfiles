@@ -23,6 +23,7 @@ install_packages_for_darwin() {
 		zsh-syntax-highlighting zsh-autosuggestions                                     # zsh plugins
 		go node rust pyenv corepack pipx                                                # dev
 		pyright lua-language-server rust-analyzer gopls bash-language-server shellcheck # lsp
+		hadolint                                                                        # lint
 		stylua rustfmt ruff prettier taplo shfmt                                        # formatter
 		gpg pinentry-mac                                                                # gpg (pinentry-mac: prompt enter gpg passphrase when required)
 		tmux tpm reattach-to-user-namespace                                             # tmux (reattach-to-user-namespace: fix tmux copy-paste)
@@ -33,6 +34,7 @@ install_packages_for_darwin() {
 		hiddenbar numi menubarx google-drive telegram google-chrome raycast spotify
 		bing-wallpaper obsidian wechat webull whatsapp lark feishu eudic snipaste # tools
 		homebrew/cask-fonts/font-hack-nerd-font                                   # font
+		ollama                                                                    # LLMs
 	)
 
 	echo "[homebrew] install cmd packages"

@@ -104,6 +104,7 @@ return {
 				"vimdoc",
 				"python",
 				"php",
+				"dockerfile",
 			},
 			highlight = { enable = true },
 			indent = { enable = true },
