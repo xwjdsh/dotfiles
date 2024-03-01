@@ -19,6 +19,7 @@
     ~/.config/nvim: nvim
     ~/.config/zed/settings.json: zed/settings.json
     ~/.zshrc: zsh/.zshrc
+    ~/.p10k.zsh: zsh/.p10k.zsh
     ~/.gitconfig: git/.gitconfig
     ~/docker: docker
     ~/.gnupg/gpg-agent.conf: gnupg/gpg-agent.conf

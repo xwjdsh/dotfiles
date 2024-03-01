@@ -17,10 +17,10 @@ install_packages_for_darwin() {
 
 	# homebrew packages
 	cmd_packages=(
-		fzf nvim bat fd gpg htop lazydocker rclone glow jq hugo ag ripgrep sing-box
-		iredis yazi cloudflared telnet lsd atuin thefuck tlrc tree gping xh zoxide      # tools
+		fzf nvim bat fd htop lazydocker rclone glow jq hugo ag ripgrep sing-box
+		iredis yazi cloudflared telnet lsd tlrc tree gping xh                           # tools
 		git-delta git-extras git-crypt gh lazygit                                       # git
-		zsh-syntax-highlighting zsh-autosuggestions                                     # zsh plugins
+		zsh-syntax-highlighting zsh-autosuggestions zoxide atuin powerlevel10k          # zsh
 		go node rust pyenv corepack pipx                                                # dev
 		pyright lua-language-server rust-analyzer gopls bash-language-server shellcheck # lsp
 		hadolint                                                                        # lint
