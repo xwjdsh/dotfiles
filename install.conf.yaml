@@ -17,6 +17,7 @@
 - link:
     ~/.tmux.conf: tmux/tmux.conf
     ~/.config/nvim: nvim
+    ~/.config/mise: mise
     ~/.config/zed/settings.json: zed/settings.json
     ~/.zshrc: zsh/.zshrc
     ~/.p10k.zsh: zsh/.p10k.zsh
