@@ -18,10 +18,10 @@ install_packages_for_darwin() {
 	# homebrew packages
 	cmd_packages=(
 		fzf nvim bat fd htop lazydocker rclone glow jq hugo ag ripgrep sing-box
-		iredis yazi cloudflared telnet lsd tlrc tree gping xh pipx mise                 # tools
+		iredis yazi cloudflared telnet lsd tlrc tree gping xh                           # tools
 		git-delta git-extras git-crypt gh lazygit                                       # git
 		zsh-syntax-highlighting zsh-autosuggestions zoxide atuin powerlevel10k          # zsh
-		go rust                                                                         # dev
+		go node rust pyenv corepack pipx                                                # dev
 		pyright lua-language-server rust-analyzer gopls bash-language-server shellcheck # lsp
 		hadolint                                                                        # lint
 		stylua rustfmt ruff prettier taplo shfmt                                        # formatter
@@ -64,11 +64,6 @@ else
 	echo "[on-my-zsh] is installed, nothing to do here"
 fi
 
-# mise
-if exists mise; then
-	mise install
-fi
-
 if exists go; then
 	echo "[go] installing go related tools"
 	go install golang.org/x/tools/cmd/goimports@latest
@@ -100,3 +95,4 @@ git submodule update --init --recursive
 "$DOTFILES"/install
 
 echo "all done!"
+exit 0
