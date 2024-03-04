@@ -18,10 +18,10 @@ install_packages_for_darwin() {
 	# homebrew packages
 	cmd_packages=(
 		fzf nvim bat fd htop lazydocker rclone glow jq hugo ag ripgrep sing-box
-		iredis yazi cloudflared telnet lsd tlrc tree gping xh                           # tools
-		git-delta git-extras git-crypt gh lazygit                                       # git
+		iredis yazi cloudflared telnet lsd tlrc tree gping httpie                       # tools
+		git-delta git-extras git-crypt gh lazygit git-open                              # git
 		zsh-syntax-highlighting zsh-autosuggestions zoxide atuin powerlevel10k          # zsh
-		go node rust pyenv corepack pipx                                                # dev
+		go rust pyenv pipx n                                                            # dev
 		pyright lua-language-server rust-analyzer gopls bash-language-server shellcheck # lsp
 		hadolint                                                                        # lint
 		stylua rustfmt ruff prettier taplo shfmt                                        # formatter
@@ -71,11 +71,6 @@ if exists go; then
 	go install golang.org/x/tools/cmd/deadcode@latest
 fi
 
-if exists npm; then
-	echo "[node] installing node related tools"
-	npm install --g git-open
-fi
-
 if exists pipx; then
 	echo "[python] installing python related tools"
 	pipx ensurepath
@@ -94,5 +89,15 @@ cd "$DOTFILES"
 git submodule update --init --recursive
 "$DOTFILES"/install
 
+if exists pyenv; then
+	echo "[pyenv] installing python"
+	pyenv install -s 3.12:latest
+	pyenv global 3.12
+fi
+
+if exists n; then
+	echo "[n] installing node"
+	n latest
+fi
+
 echo "all done!"
-exit 0

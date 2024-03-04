@@ -137,14 +137,12 @@ alias ping='gping --clear'
 export GPG_TTY=$(tty)
 
 
-export GOPATH="$HOME/go"
-export PATH="$GOPATH/bin:$PATH"
-
-# pyenv
+export GOPATH=$HOME/go
+export N_PREFIX=$HOME/.n
 export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+export PATH="$GOPATH/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:$PATH"
 
+eval "$(pyenv init -)"
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
 
