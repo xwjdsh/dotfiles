@@ -26,7 +26,7 @@ install_packages_for_darwin() {
 		hadolint                                                                        # lint
 		stylua rustfmt ruff prettier taplo shfmt                                        # formatter
 		gpg pinentry-mac                                                                # gpg (pinentry-mac: prompt enter gpg passphrase when required)
-		tmux tpm reattach-to-user-namespace                                             # tmux (reattach-to-user-namespace: fix tmux copy-paste)
+		tmux tpm reattach-to-user-namespace nowplaying-cli                              # tmux (reattach-to-user-namespace: fix tmux copy-paste, nowplaying-cli: dependency for plugin)
 	)
 	app_packages=(
 		git-credential-manager visual-studio-code zed proxyman tailscale codewhisperer
