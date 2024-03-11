@@ -1,76 +1,36 @@
 return {
 	{
 		"akinsho/bufferline.nvim",
-		lazy = false,
-		opts = {
-			options = {
-				indicator = {
-					icon = "🐱",
-					style = "icon",
-				},
-				offsets = {
-					{
-						filetype = "NvimTree",
-						text = "File Explorer",
-						highlight = "Directory",
-						text_align = "left",
-						separator = true,
+		after = "catppuccin",
+		config = function()
+			require("bufferline").setup({
+				highlights = require("catppuccin.groups.integrations.bufferline").get(),
+				options = {
+					indicator = {
+						icon = "🐱",
+						style = "icon",
+					},
+					offsets = {
+						{
+							filetype = "NvimTree",
+							text = "File Explorer",
+							highlight = "Directory",
+							text_align = "left",
+							separator = true,
+						},
 					},
 				},
-			},
-		},
-		keys = {
-			{ "<C-h>", ":BufferLineCyclePrev<CR>" },
-			{ "<C-l>", ":BufferLineCycleNext<CR>" },
-			{ "<C-x>", ":BufferLinePickClose<CR>" },
-		},
-	},
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000, -- make sure to load this before all the other start plugins
-		config = function()
-			require("tokyonight").setup({
-				style = "moon",
-				transparent = true,
-				transparent_sidebar = true,
-				styles = {
-					sidebars = "transparent",
-					floats = "transparent",
-				},
 			})
-			vim.cmd([[colorscheme tokyonight]])
 		end,
 	},
 	{
 		"nvim-lualine/lualine.nvim",
 		opts = {
+			theme = "catppuccin",
 			options = {
-				icons_enabled = true,
-				theme = "tokyonight",
-				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
-				disabled_filetypes = {},
-				always_divide_middle = true,
+				component_separators = " ",
+				section_separators = { left = "", right = "" },
 			},
-			sections = {
-				lualine_a = { "mode" },
-				lualine_b = { "branch", "diff", "diagnostics" },
-				lualine_c = { "filename" },
-				lualine_x = { "encoding", "fileformat", "filetype" },
-				lualine_y = { "progress" },
-				lualine_z = { "location" },
-			},
-			inactive_sections = {
-				lualine_a = {},
-				lualine_b = {},
-				lualine_c = { "filename" },
-				lualine_x = { "location" },
-				lualine_y = {},
-				lualine_z = {},
-			},
-			tabline = {},
-			extensions = {},
 		},
 	},
 	{
@@ -85,39 +45,32 @@ return {
 		opts = {},
 	},
 	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
+		"lewis6991/gitsigns.nvim",
 		opts = {
-			-- add any options here
-			lsp = {
-				-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-				override = {
-					["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-					["vim.lsp.util.stylize_markdown"] = true,
-					["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
-				},
+			signs = {
+				add = { text = "│" },
+				change = { text = "│" },
+				delete = { text = "_" },
+				topdelete = { text = "‾" },
+				changedelete = { text = "~" },
+				untracked = { text = "┆" },
 			},
-			-- you can enable a preset for easier configuration
-			presets = {
-				bottom_search = true, -- use a classic bottom cmdline for search
-				command_palette = true, -- position the cmdline and popupmenu together
-				long_message_to_split = true, -- long messages will be sent to a split
-				inc_rename = false, -- enables an input dialog for inc-rename.nvim
-				lsp_doc_border = false, -- add a border to hover docs and signature help
+			current_line_blame = true,
+			current_line_blame_opts = {
+				virt_text = true,
+				virt_text_pos = "eol",
+				delay = 1000,
+				ignore_whitespace = false,
+				virt_text_priority = 100,
 			},
-		},
-		dependencies = {
-			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-			"MunifTanjim/nui.nvim",
-			-- OPTIONAL:
-			--   `nvim-notify` is only needed, if you want to use the notification view.
-			--   If not available, we use `mini` as the fallback
-			"rcarriga/nvim-notify",
 		},
 	},
 	{
-		"lukas-reineke/headlines.nvim",
-		dependencies = "nvim-treesitter/nvim-treesitter",
+		"nvim-tree/nvim-tree.lua",
+		dependencies = { "kyazdani42/nvim-web-devicons" },
 		opts = {},
+		keys = {
+			{ "<leader>f", ":NvimTreeToggle<CR>" },
+		},
 	},
 }

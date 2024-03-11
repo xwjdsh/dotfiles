@@ -1,57 +1,69 @@
+local ls = {
+	lua_ls = {
+		on_init = function(client)
+			local path = client.workspace_folders[1].name
+			if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+				client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
+					Lua = {
+						runtime = {
+							-- Tell the language server which version of Lua you're using
+							-- (most likely LuaJIT in the case of Neovim)
+							version = "LuaJIT",
+						},
+						-- Make the server aware of Neovim runtime files
+						workspace = {
+							checkThirdParty = false,
+							library = {
+								vim.env.VIMRUNTIME,
+							},
+						},
+					},
+				})
+
+				client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
+			end
+			return true
+		end,
+	},
+	rust_analyzer = {
+		on_attach = function(client)
+			require("completion").on_attach(client)
+		end,
+		settings = {
+			["rust-analyzer"] = {
+				imports = {
+					granularity = {
+						group = "module",
+					},
+					prefix = "self",
+				},
+				cargo = {
+					buildScripts = {
+						enable = true,
+					},
+				},
+				procMacro = {
+					enable = true,
+				},
+			},
+		},
+	},
+	gopls = {},
+	pyright = {},
+	bashls = {},
+	jsonls = {},
+}
+
 return {
 	{
 		"neovim/nvim-lspconfig",
+		after = { "mason-lspconfig" },
 		config = function()
 			-- Set up lspconfig.
 			local lspconfig = require("lspconfig")
-			lspconfig.gopls.setup({})
-			lspconfig.lua_ls.setup({
-				on_init = function(client)
-					local path = client.workspace_folders[1].name
-					if
-						not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc")
-					then
-						client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
-							Lua = {
-								runtime = {
-									-- Tell the language server which version of Lua you're using
-									-- (most likely LuaJIT in the case of Neovim)
-									version = "LuaJIT",
-								},
-								-- Make the server aware of Neovim runtime files
-								workspace = {
-									checkThirdParty = false,
-									library = {
-										vim.env.VIMRUNTIME,
-									},
-								},
-							},
-						})
-
-						client.notify("workspace/didChangeConfiguration", { settings = client.config.settings })
-					end
-					return true
-				end,
-			})
-			lspconfig.pyright.setup({})
-
-			local on_attach = function(client)
-				require("completion").on_attach(client)
+			for l, opts in pairs(ls) do
+				lspconfig[l].setup(opts)
 			end
-			lspconfig.rust_analyzer.setup({
-				on_attach = on_attach,
-				settings = {
-					["rust-analyzer"] = {
-						imports = {
-							granularity = {
-								group = "module",
-							},
-							prefix = "self",
-						},
-					},
-				},
-			})
-			lspconfig.bashls.setup({})
 
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
@@ -90,6 +102,20 @@ return {
 					end, opts)
 				end,
 			})
+		end,
+	},
+	{
+		"williamboman/mason-lspconfig.nvim",
+		dependencies = {
+			"williamboman/mason.nvim",
+		},
+		config = function(_, opts)
+			opts.ensure_installed = {}
+			for l in pairs(ls) do
+				table.insert(opts.ensure_installed, l)
+			end
+			require("mason").setup({})
+			require("mason-lspconfig").setup(opts)
 		end,
 	},
 }

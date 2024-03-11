@@ -132,6 +132,7 @@ alias lzd='lazydocker'
 alias lzg='lazygit'
 
 alias ping='gping --clear'
+alias mux='tmuxinator'
 
 # fix 'gpg: signing failed: Inappropriate ioctl for device'
 export GPG_TTY=$(tty)
@@ -140,7 +141,8 @@ export GPG_TTY=$(tty)
 export GOPATH=$HOME/go
 export N_PREFIX=$HOME/.n
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$GOPATH/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:$PATH"
+export MASON_HOME="$HOME/.local/share/nvim/mason"
+export PATH="$GOPATH/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:$MASON_HOME/bin:$PATH"
 
 eval "$(pyenv init -)"
 eval "$(atuin init zsh)"

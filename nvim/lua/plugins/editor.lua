@@ -8,15 +8,6 @@ return {
 		opts = {},
 	},
 	{
-		"nvim-tree/nvim-tree.lua",
-		dependencies = { "kyazdani42/nvim-web-devicons" },
-		lazy = false,
-		opts = {},
-		keys = {
-			{ "<leader>f", ":NvimTreeToggle<CR>" },
-		},
-	},
-	{
 		"stevearc/aerial.nvim",
 		opts = {
 			on_attach = function(bufnr)
@@ -39,55 +30,6 @@ return {
 		opts = {},
 	},
 	{
-		"stevearc/conform.nvim",
-		config = function()
-			local conform = require("conform")
-			conform.setup({
-				formatters_by_ft = {
-					lua = { "stylua" },
-					python = { "ruff_format" },
-					rust = { "rustfmt" },
-					javascript = { "prettier" },
-					typescript = { "prettier" },
-					json = { "prettier" },
-					yaml = { "prettier" },
-					markdown = { "prettier" },
-					toml = { "taplo" },
-					go = { "goimports", "gofmt" },
-					sh = { "shfmt" },
-				},
-				format_on_save = {
-					timeout_ms = 500,
-					lsp_fallback = true,
-				},
-			})
-			conform.formatters.goimports = {
-				prepend_args = { "-local", "github.com/xwjdsh" },
-			}
-		end,
-	},
-	{
-		"lewis6991/gitsigns.nvim",
-		opts = {
-			signs = {
-				add = { text = "│" },
-				change = { text = "│" },
-				delete = { text = "_" },
-				topdelete = { text = "‾" },
-				changedelete = { text = "~" },
-				untracked = { text = "┆" },
-			},
-			current_line_blame = true,
-			current_line_blame_opts = {
-				virt_text = true,
-				virt_text_pos = "eol",
-				delay = 1000,
-				ignore_whitespace = false,
-				virt_text_priority = 100,
-			},
-		},
-	},
-	{
 		"folke/trouble.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {
@@ -97,7 +39,6 @@ return {
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
-		lazy = false,
 		opts = {},
 	},
 	{
