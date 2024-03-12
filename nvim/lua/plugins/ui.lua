@@ -34,13 +34,6 @@ return {
 		},
 	},
 	{
-		"echasnovski/mini.indentscope",
-		opts = {
-			symbol = "│",
-			options = { try_as_border = true },
-		},
-	},
-	{
 		"stevearc/dressing.nvim",
 		opts = {},
 	},
@@ -70,7 +63,29 @@ return {
 		dependencies = { "kyazdani42/nvim-web-devicons" },
 		opts = {},
 		keys = {
-			{ "<leader>f", ":NvimTreeToggle<CR>" },
+			{ "<leader>f", ":NvimTreeToggle<CR>", desc = "nvim tree" },
+		},
+	},
+	{
+		"echasnovski/mini.starter",
+		opts = {},
+	},
+	{
+		"echasnovski/mini.indentscope",
+		opts = {
+			symbol = "│",
+			options = { try_as_border = true },
+		},
+	},
+	{
+		"hedyhli/outline.nvim",
+		lazy = true,
+		cmd = { "Outline", "OutlineOpen" },
+		keys = {
+			{ "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" },
+		},
+		opts = {
+			width = 10,
 		},
 	},
 }

@@ -26,6 +26,15 @@ return {
 				},
 			},
 		},
+		keys = {
+			{
+				"<leader>fm",
+				function()
+					require("conform").format()
+				end,
+				desc = "format",
+			},
+		},
 	},
 	{
 		"zapling/mason-conform.nvim",
