@@ -10,6 +10,7 @@
     - ~/.config/zed
     - ~/.config/atuin
     - ~/.gnupg
+    - ~/.nvm
 
 - clean: ["~"]
 

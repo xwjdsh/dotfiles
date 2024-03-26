@@ -133,20 +133,24 @@ alias lzg='lazygit'
 
 alias ping='gping --clear'
 alias mux='tmuxinator'
+alias csv='csvlens'
 
 # fix 'gpg: signing failed: Inappropriate ioctl for device'
 export GPG_TTY=$(tty)
 
 
 export GOPATH=$HOME/go
-export N_PREFIX=$HOME/.n
+export NVM_DIR="$HOME/.nvm"
 export PYENV_ROOT="$HOME/.pyenv"
 export MASON_HOME="$HOME/.local/share/nvim/mason"
-export PATH="$GOPATH/bin:$N_PREFIX/bin:$PYENV_ROOT/bin:$MASON_HOME/bin:$PATH"
+export PATH="$GOPATH/bin:$PYENV_ROOT/bin:$MASON_HOME/bin:$PATH"
 
 eval "$(pyenv init -)"
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
+
+# this loads nvm
+[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

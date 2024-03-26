@@ -18,10 +18,10 @@ install_packages_for_darwin() {
 	# homebrew packages
 	cmd_packages=(
 		fzf nvim bat fd htop lazydocker rclone glow jq hugo ag ripgrep sing-box
-		iredis yazi cloudflared telnet lsd tlrc tree gping httpie              # tools
+		iredis yazi cloudflared telnet lsd tlrc tree gping httpie csvlens      # tools
 		git-delta git-extras git-crypt gh lazygit git-open                     # git
 		zsh-syntax-highlighting zsh-autosuggestions zoxide atuin powerlevel10k # zsh
-		go rust pyenv pipx n                                                   # dev
+		go rust pyenv pipx nvm                                                 # dev
 		hadolint                                                               # lint
 		gpg pinentry-mac                                                       # gpg (pinentry-mac: prompt enter gpg passphrase when required)
 		tmux tpm reattach-to-user-namespace nowplaying-cli tmuxinator          # tmux (reattach-to-user-namespace: fix tmux copy-paste, nowplaying-cli: dependency for plugin)
@@ -29,10 +29,10 @@ install_packages_for_darwin() {
 	app_packages=(
 		git-credential-manager visual-studio-code zed proxyman tailscale codewhisperer
 		cloudflare-warp stats orbstack sequel-ace fork iterm2 sfm dbeaver-community rapidapi redisinsight # dev
-		hiddenbar numi menubarx google-drive telegram google-chrome raycast spotify
-		bing-wallpaper obsidian wechat webull whatsapp lark feishu eudic snipaste rocket keka kap # tools
-		homebrew/cask-fonts/font-fira-code-nerd-font                                              # font
-		ollama                                                                                    # LLMs
+		hiddenbar numi menubarx google-drive telegram google-chrome raycast spotify discord spacedrive
+		bing-wallpaper obsidian wechat webull whatsapp lark feishu eudic snipaste rocket keka kap localsend/localsend/localsend # tools
+		homebrew/cask-fonts/font-fira-code-nerd-font                                                                            # font
+		ollama                                                                                                                  # LLMs
 	)
 
 	echo "[homebrew] install cmd packages"
@@ -94,9 +94,10 @@ if exists pyenv; then
 	pyenv global 3.12
 fi
 
-if exists n; then
-	echo "[n] installing node"
-	n latest
+if [ -s "$HOME/.nvm" ]; then
+	echo "[nvm] installing node"
+	\. "$NVM_DIR/nvm.sh"
+	nvm install node
 fi
 
 echo "all done!"
