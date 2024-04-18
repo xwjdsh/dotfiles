@@ -29,10 +29,10 @@ install_packages_for_darwin() {
 	app_packages=(
 		git-credential-manager visual-studio-code zed proxyman tailscale codewhisperer
 		cloudflare-warp stats orbstack sequel-ace fork iterm2 sfm dbeaver-community rapidapi redisinsight # dev
-		hiddenbar numi menubarx google-drive telegram google-chrome raycast spotify discord
-		bing-wallpaper obsidian wechat webull whatsapp lark feishu eudic snipaste rocket keka localsend/localsend/localsend # tools
-		homebrew/cask-fonts/font-fira-code-nerd-font                                                                        # font
-		ollama                                                                                                              # LLMs
+		hiddenbar numi menubarx google-drive telegram raycast spotify discord arc
+		bing-wallpaper obsidian wechat webull whatsapp lark feishu eudic snipaste keka localsend/localsend/localsend # tools
+		homebrew/cask-fonts/font-fira-code-nerd-font                                                                 # font
+		ollama                                                                                                       # LLMs
 	)
 
 	echo "[homebrew] install cmd packages"

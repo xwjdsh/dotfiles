@@ -12,7 +12,7 @@
   },
   "base_keymap": "VSCode",
   "vim_mode": true,
-  "theme": "Solarized Dark",
+  "theme": "Andromeda",
   "ui_font_size": 16,
   "buffer_font_size": 16,
   "language_overrides": {
