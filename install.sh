@@ -98,6 +98,7 @@ if [ -s "$HOME/.nvm" ]; then
 	echo "[nvm] installing node"
 	source "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
 	nvm install node
+	npm install -g opencommit
 fi
 
 echo "all done!"
