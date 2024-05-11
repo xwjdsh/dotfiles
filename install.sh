@@ -27,9 +27,9 @@ install_packages_for_darwin() {
 		tmux tpm reattach-to-user-namespace nowplaying-cli tmuxinator                              # tmux (reattach-to-user-namespace: fix tmux copy-paste, nowplaying-cli: dependency for plugin)
 	)
 	app_packages=(
-		git-credential-manager visual-studio-code zed proxyman tailscale codewhisperer
-		cloudflare-warp stats orbstack sequel-ace fork iterm2 sfm dbeaver-community rapidapi redisinsight # dev
-		hiddenbar numi menubarx google-drive telegram raycast spotify discord arc
+		git-credential-manager visual-studio-code zed proxyman tailscale
+		cloudflare-warp stats orbstack sequel-ace fork iterm2 sfm dbeaver-community rapidapi redisinsight amazon-q # dev
+		hiddenbar numi menubarx google-drive telegram raycast discord arc
 		bing-wallpaper obsidian wechat webull whatsapp lark feishu eudic snipaste keka localsend/localsend/localsend # tools
 		homebrew/cask-fonts/font-fira-code-nerd-font                                                                 # font
 		ollama                                                                                                       # LLMs
