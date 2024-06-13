@@ -65,7 +65,7 @@ fi
 if exists go; then
 	echo "[go] installing go related tools"
 	go install golang.org/x/tools/cmd/goimports@latest
-	go install github.com/cosmtrek/air@latest
+	go install github.com/air-verse/air@latest
 	go install golang.org/x/tools/cmd/deadcode@latest
 fi
 
