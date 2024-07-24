@@ -1,16 +1,25 @@
-version: "3.8"
-
 services:
-  mysql:
-    # platform: linux/x86_64
-    image: mysql:${IMAGE_TAG}
-    container_name: mysql
+  mysql5:
+    platform: linux/x86_64
+    image: mysql:5.7
+    container_name: mysql5
     environment:
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL5_ROOT_PASSWORD}
     ports:
-      - "${PORT}:3306"
+      - "${MYSQL5_PORT}:3306"
     volumes:
-      - data:/var/lib/mysql
+      - mysql5_data:/var/lib/mysql
+
+  mysql8:
+    image: mysql:8.4
+    container_name: mysql8
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL8_ROOT_PASSWORD}
+    ports:
+      - "${MYSQL8_PORT}:3306"
+    volumes:
+      - mysql8_data:/var/lib/mysql
 
 volumes:
-  data:
+  mysql5_data:
+  mysql8_data:
