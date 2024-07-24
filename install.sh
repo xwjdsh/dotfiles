@@ -18,13 +18,13 @@ install_packages_for_darwin() {
 	# homebrew packages
 	cmd_packages=(
 		fzf nvim bat fd htop lazydocker rclone glow jq hugo ag ripgrep sing-box
-		iredis yazi cloudflared telnet lsd tlrc tree gping httpie csvlens peterldowns/tap/localias # tools
-		git-delta git-extras git-crypt gh lazygit git-open                                         # git
-		zsh-syntax-highlighting zsh-autosuggestions zoxide atuin powerlevel10k                     # zsh
-		go rust pyenv pipx nvm                                                                     # dev
-		hadolint                                                                                   # lint
-		gpg pinentry-mac                                                                           # gpg (pinentry-mac: prompt enter gpg passphrase when required)
-		tmux tpm reattach-to-user-namespace nowplaying-cli tmuxinator                              # tmux (reattach-to-user-namespace: fix tmux copy-paste, nowplaying-cli: dependency for plugin)
+		iredis yazi cloudflared telnet lsd tlrc tree gping httpie csvlens dust # tools
+		git-delta git-extras git-crypt gh lazygit git-open                     # git
+		zsh-syntax-highlighting zsh-autosuggestions zoxide atuin powerlevel10k # zsh
+		go rust pyenv pipx nvm                                                 # dev
+		hadolint                                                               # lint
+		gpg pinentry-mac                                                       # gpg (pinentry-mac: prompt enter gpg passphrase when required)
+		tmux tpm reattach-to-user-namespace nowplaying-cli tmuxinator          # tmux (reattach-to-user-namespace: fix tmux copy-paste, nowplaying-cli: dependency for plugin)
 	)
 	app_packages=(
 		git-credential-manager visual-studio-code zed proxyman tailscale
