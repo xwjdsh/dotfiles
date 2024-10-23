@@ -31,7 +31,7 @@ install_packages_for_darwin() {
 		cloudflare-warp stats orbstack sequel-ace fork iterm2 sfm dbeaver-community rapidapi redisinsight amazon-q # dev
 		hiddenbar numi menubarx google-drive telegram raycast discord arc
 		bing-wallpaper obsidian wechat webull whatsapp lark feishu eudic snipaste keka localsend/localsend/localsend # tools
-		homebrew/cask-fonts/font-fira-code-nerd-font                                                                 # font
+		font-monaspace-nerd-font                                                                                     # font
 		ollama                                                                                                       # LLMs
 	)
 
@@ -41,6 +41,11 @@ install_packages_for_darwin() {
 	echo "[homebrew] install app packages"
 	brew install --cask "${app_packages[@]}"
 
+	removed_app_packages=(
+		font-fira-code-nerd-font
+	)
+	echo "[homebrew] remove app packages"
+	brew uninstall --cask --force "${removed_app_packages[@]}"
 }
 
 OS="$(uname)"
