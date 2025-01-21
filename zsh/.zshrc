@@ -145,7 +145,7 @@ export PYENV_ROOT="$HOME/.pyenv"
 export MASON_HOME="$HOME/.local/share/nvim/mason"
 export PATH="$GOPATH/bin:$PYENV_ROOT/bin:$MASON_HOME/bin:$PATH"
 
-eval "$(pyenv init -)"
+eval "$(pyenv init - zsh)"
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
 

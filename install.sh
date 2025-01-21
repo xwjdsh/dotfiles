@@ -29,10 +29,10 @@ install_packages_for_darwin() {
 	app_packages=(
 		git-credential-manager visual-studio-code zed proxyman tailscale
 		cloudflare-warp stats orbstack sequel-ace fork iterm2 sfm dbeaver-community rapidapi redisinsight amazon-q # dev
-		hiddenbar numi menubarx google-drive telegram raycast discord raindropio google-chrome
-		bing-wallpaper obsidian wechat webull whatsapp lark feishu eudic snipaste keka localsend/localsend/localsend # tools
-		font-monaspace-nerd-font                                                                                     # font
-		ollama                                                                                                       # LLMs
+		hiddenbar numi menubarx google-drive telegram raycast discord raindropio arc
+		bing-wallpaper obsidian notion wechat webull whatsapp lark feishu localsend/localsend/localsend # tools
+		font-monaspace-nerd-font                                                                        # font
+		ollama                                                                                          # LLMs
 	)
 
 	echo "[homebrew] install cmd packages"
@@ -42,7 +42,7 @@ install_packages_for_darwin() {
 	brew install --cask "${app_packages[@]}"
 
 	removed_app_packages=(
-		font-fira-code-nerd-font arc
+		font-fira-code-nerd-font google-chrome eudic snipaste keka
 	)
 	echo "[homebrew] remove app packages"
 	brew uninstall --cask --force "${removed_app_packages[@]}"
@@ -92,18 +92,5 @@ fi
 cd "$DOTFILES"
 git submodule update --init --recursive
 "$DOTFILES"/install
-
-if exists pyenv; then
-	echo "[pyenv] installing python"
-	pyenv install -s 3.12:latest
-	pyenv global 3.12
-fi
-
-if [ -s "$HOME/.nvm" ]; then
-	echo "[nvm] installing node"
-	source "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
-	nvm install node
-	npm install -g opencommit
-fi
 
 echo "all done!"
