@@ -41,6 +41,11 @@ window-padding-x = 8
 window-padding-y = 8
 window-decoration = true
 
+# Background image
+background-image = ~/.config/ghostty/bg.jpg
+background-opacity = 0.95
+background-blur-radius = 20
+
 # Cursor
 cursor-style = block
 cursor-style-blink = false
