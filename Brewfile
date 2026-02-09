@@ -41,6 +41,8 @@ brew "pinentry-mac"
 brew "powerlevel10k"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Organize software neatly under a single directory tree (e.g. /usr/local)
+brew "stow"
 # Terminal multiplexer
 brew "tmux"
 # Plugin manager for tmux
