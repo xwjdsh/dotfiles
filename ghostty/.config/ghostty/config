@@ -19,7 +19,7 @@ cursor-style = block
 cursor-style-blink = false
 
 # Shell integration
-shell-integration = true
+shell-integration = detect
 shell-integration-features = cursor,sudo,title
 
 # Performance
