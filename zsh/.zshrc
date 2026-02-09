@@ -134,15 +134,11 @@ export GPG_TTY=$(tty)
 
 
 export GOPATH=$HOME/go
-export NVM_DIR="$HOME/.nvm"
 export MASON_HOME="$HOME/.local/share/nvim/mason"
 export PATH="$GOPATH/bin:$PYENV_ROOT/bin:$MASON_HOME/bin:$PATH"
 
 eval "$(atuin init zsh)"
 eval "$(zoxide init zsh)"
-
-# this loads nvm
-[ -s "$HOMEBREW_PREFIX/opt/nvm/nvm.sh" ] && \. "$HOMEBREW_PREFIX/opt/nvm/nvm.sh"
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
