@@ -43,7 +43,9 @@ window-decoration = true
 
 # Background image
 background-image = ~/.config/ghostty/bg.jpg
-background-opacity = 0.95
+background-opacity = 0.4
+background-image-opacity = 0.4
+background-image-fit = cover
 background-blur-radius = 20
 
 # Cursor
