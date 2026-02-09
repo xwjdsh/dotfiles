@@ -2,8 +2,8 @@
 # https://ghostty.org/docs/config
 
 # Font
-font-family = MonaspiceNe Nerd Font
-font-size = 14
+font-family = MonaspiceRn Nerd Font Mono
+font-size = 15
 font-thicken = true
 
 # Theme - Catppuccin Mocha (matches your tmux theme)
@@ -43,7 +43,7 @@ window-decoration = true
 
 # Background image
 background-image = ~/.config/ghostty/bg.jpg
-background-image-opacity = 0.2
+background-image-opacity = 0.3
 background-image-fit = cover
 background-blur-radius = 20
 
