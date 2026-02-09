@@ -1,15 +1,21 @@
 #!/usr/bin/env bash
+set -euo pipefail
 
-set -e
+DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
+cd "$DOTFILES_DIR"
 
-CONFIG="install.conf.yaml"
-DOTBOT_DIR="dotbot"
+# Install stow if missing
+command -v stow >/dev/null || brew install stow
 
-DOTBOT_BIN="bin/dotbot"
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Stow packages
+PACKAGES=(zsh git tmux nvim bat atuin zed gnupg)
+for pkg in "${PACKAGES[@]}"; do
+  echo "📦 Stowing $pkg..."
+  stow -R --target="$HOME" "$pkg"
+done
 
-cd "${BASEDIR}"
-git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive "${DOTBOT_DIR}"
+# Manual symlinks
+ln -sfn "$DOTFILES_DIR/docker" "$HOME/docker"
+ln -sfn "$HOME/Library/Mobile Documents/com~apple~CloudDocs" "$HOME/icloud"
 
-"${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+echo "✅ All done!"
