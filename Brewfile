@@ -47,6 +47,8 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# OpenAI Codex CLI
+cask "codex"
 # Menu bar app showing usage stats for AI coding assistants
 cask "codexbar"
 # English dictionary
