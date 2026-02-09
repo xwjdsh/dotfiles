@@ -15,7 +15,6 @@ for pkg in "${PACKAGES[@]}"; do
 done
 
 # Manual symlinks
-ln -sfn "$DOTFILES_DIR/docker" "$HOME/docker"
 ln -sfn "$HOME/Library/Mobile Documents/com~apple~CloudDocs" "$HOME/icloud"
 
 echo "✅ All done!"
