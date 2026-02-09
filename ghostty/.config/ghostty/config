@@ -1,0 +1,44 @@
+# Ghostty Configuration
+# https://ghostty.org/docs/config
+
+# Font
+font-family = MonaspiceNe Nerd Font
+font-size = 14
+font-thicken = true
+
+# Theme - Catppuccin Mocha (matches your tmux theme)
+theme = catppuccin-mocha
+
+# Window
+window-padding-x = 8
+window-padding-y = 8
+window-decoration = true
+
+# Cursor
+cursor-style = block
+cursor-style-blink = false
+
+# Shell integration
+shell-integration = true
+shell-integration-features = cursor,sudo,title
+
+# Performance
+macos-non-native-fullscreen = false
+macos-titlebar-style = tabs
+
+# Copy/Paste behavior
+copy-on-select = false
+clipboard-trim-trailing-spaces = true
+
+# Keybindings (keep macOS standard)
+# Cmd+T = new tab
+# Cmd+W = close tab
+# Cmd+N = new window
+# Cmd+Shift+[ / ] = switch tabs
+# Cmd+1-9 = go to tab 1-9
+
+# Scrollback
+scrollback-limit = 10000
+
+# Mouse
+mouse-hide-while-typing = true
