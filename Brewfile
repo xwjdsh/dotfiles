@@ -15,18 +15,12 @@ brew "fzf"
 brew "git-crypt"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
-# Small git utilities
-brew "git-extras"
-# Open GitHub webpages from a terminal
-brew "git-open"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
 # Fast linters runner for Go
 brew "golangci-lint"
-# Improved top (interactive process viewer)
-brew "htop"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Clone of ls with colorful output, file type icons, and more
@@ -35,8 +29,6 @@ brew "lsd"
 brew "neovim"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
-# Retrieves currently playing media, and simulates media actions
-brew "nowplaying-cli"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
 # Search tool like grep and The Silver Searcher
@@ -49,8 +41,6 @@ brew "stow"
 brew "tmux"
 # Plugin manager for tmux
 brew "tpm"
-# Display directories as trees (with optional color/HTML output)
-brew "tree"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
