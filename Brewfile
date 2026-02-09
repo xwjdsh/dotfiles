@@ -1,3 +1,5 @@
+tap "steipete/tap"
+
 brew "zoxide"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
@@ -55,6 +57,8 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# Menu bar app showing usage stats for AI coding assistants
+cask "codexbar"
 # English dictionary
 cask "eudic"
 cask "font-fira-code-nerd-font"
