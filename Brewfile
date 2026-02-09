@@ -37,10 +37,10 @@ brew "node"
 brew "nowplaying-cli"
 # Pinentry for GPG on Mac
 brew "pinentry-mac"
-# Theme for zsh
-brew "powerlevel10k"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Cross-shell prompt for astronauts
+brew "starship"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Terminal multiplexer
@@ -69,8 +69,6 @@ cask "google-chrome"
 cask "google-drive"
 # Fast, native, feature-rich terminal emulator
 cask "ghostty"
-# Terminal emulator as alternative to Apple's Terminal app
-cask "iterm2"
 # Menu bar manager
 cask "jordanbaird-ice"
 # Calculator and converter application
