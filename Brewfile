@@ -67,6 +67,8 @@ cask "git-credential-manager"
 cask "google-chrome"
 # Client for the Google Drive storage service
 cask "google-drive"
+# Fast, native, feature-rich terminal emulator
+cask "ghostty"
 # Terminal emulator as alternative to Apple's Terminal app
 cask "iterm2"
 # Menu bar manager
