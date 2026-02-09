@@ -1,21 +1,8 @@
 # Starship Configuration
 # https://starship.rs/config/
 
-# Format
-format = """
-[┌───────────────────────────────────────────────────────](bold green)\
-$username\
-$hostname\
-$directory\
-$git_branch\
-$git_status\
-$golang\
-$nodejs\
-$python\
-$rust\
-$cmd_duration\
-$line_break\
-[└─>](bold green) """
+# Simple single-line format
+format = """$directory$git_branch$git_status$golang$nodejs$python$rust$character"""
 
 # Timeout for commands
 command_timeout = 500
@@ -35,49 +22,31 @@ truncate_to_repo = true
 [git_branch]
 symbol = " "
 style = "bold purple"
+format = "[$symbol$branch]($style) "
 
 [git_status]
 style = "bold yellow"
-ahead = "⇡${count}"
-diverged = "⇕⇡${ahead_count}⇣${behind_count}"
-behind = "⇣${count}"
-conflicted = "🏳"
-untracked = "🤷"
-stashed = "📦"
-modified = "📝"
-staged = '[++\($count\)](green)'
-renamed = "👅"
-deleted = "🗑"
+format = "([$all_status$ahead_behind]($style) )"
 
 [golang]
 symbol = " "
 style = "bold cyan"
+format = "[$symbol($version )]($style)"
 
 [nodejs]
 symbol = " "
 style = "bold green"
+format = "[$symbol($version )]($style)"
 
 [python]
 symbol = " "
 style = "bold yellow"
+format = "[$symbol($version )]($style)"
 
 [rust]
 symbol = " "
 style = "bold red"
+format = "[$symbol($version )]($style)"
 
 [cmd_duration]
-min_time = 500
-style = "bold yellow"
-format = "took [$duration]($style) "
-
-[username]
-style_user = "bold yellow"
-style_root = "bold red"
-format = "[$user]($style) "
-disabled = false
-show_always = true
-
-[hostname]
-ssh_only = false
-format = "on [$hostname](bold red) "
-disabled = false
+disabled = true
