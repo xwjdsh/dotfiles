@@ -85,6 +85,8 @@ cask "numi"
 cask "obsidian"
 # Replacement for Docker Desktop
 cask "orbstack"
+# MySQL/MariaDB database management tool
+cask "sequel-ace"
 # Snip or pin screenshots
 cask "snipaste"
 # System monitor for the menu bar
