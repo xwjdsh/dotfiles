@@ -38,6 +38,8 @@ brew "starship"
 brew "stow"
 # Terminal multiplexer
 brew "tmux"
+# Extremely fast Python package installer and resolver
+brew "uv"
 # Plugin manager for tmux
 brew "tpm"
 # Shell extension to navigate your filesystem faster
