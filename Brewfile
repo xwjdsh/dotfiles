@@ -61,6 +61,8 @@ cask "codex"
 cask "copilot-cli"
 # Menu bar usage monitor for Codex and Claude
 cask "steipete/tap/codexbar"
+# Antigravity desktop app
+cask "antigravity"
 # English dictionary
 cask "eudic"
 cask "font-fira-code-nerd-font"
