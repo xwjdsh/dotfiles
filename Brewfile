@@ -1,4 +1,3 @@
-tap "homebrew/core"
 tap "steipete/tap"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
@@ -52,8 +51,6 @@ brew "zoxide"
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
-# Anthropic's official Claude AI desktop app
-cask "claude"
 # Anthropic Claude Code CLI
 cask "claude-code"
 # Free app that makes your Internet safer
