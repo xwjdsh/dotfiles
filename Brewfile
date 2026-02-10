@@ -6,8 +6,6 @@ brew "atuin"
 brew "bat"
 # Cloudflare Tunnel client (formerly Argo Tunnel)
 brew "cloudflared"
-# GitHub Copilot CLI
-brew "copilot"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
@@ -62,6 +60,8 @@ cask "claude-code"
 cask "cloudflare-warp"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
+# GitHub Copilot CLI
+cask "copilot-cli"
 # Menu bar usage monitor for Codex and Claude
 cask "steipete/tap/codexbar"
 # English dictionary
