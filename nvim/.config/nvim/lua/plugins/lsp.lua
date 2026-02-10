@@ -25,29 +25,6 @@ local ls = {
 			return true
 		end,
 	},
-	rust_analyzer = {
-		on_attach = function(client)
-			require("completion").on_attach(client)
-		end,
-		settings = {
-			["rust-analyzer"] = {
-				imports = {
-					granularity = {
-						group = "module",
-					},
-					prefix = "self",
-				},
-				cargo = {
-					buildScripts = {
-						enable = true,
-					},
-				},
-				procMacro = {
-					enable = true,
-				},
-			},
-		},
-	},
 	gopls = {},
 	pyright = {},
 	bashls = {},
@@ -57,7 +34,7 @@ local ls = {
 return {
 	{
 		"neovim/nvim-lspconfig",
-		after = { "mason-lspconfig" },
+		dependencies = { "williamboman/mason-lspconfig.nvim" },
 		config = function()
 			-- Set up lspconfig.
 			local lspconfig = require("lspconfig")

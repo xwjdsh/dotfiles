@@ -14,7 +14,6 @@ return {
 				"gomod",
 				"gowork",
 				"gosum",
-				"rust",
 				"yaml",
 				"json",
 				"toml",

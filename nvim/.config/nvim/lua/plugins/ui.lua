@@ -1,7 +1,7 @@
 return {
 	{
 		"akinsho/bufferline.nvim",
-		after = "catppuccin",
+		dependencies = { "catppuccin/nvim" },
 		config = function()
 			require("bufferline").setup({
 				highlights = require("catppuccin.groups.integrations.bufferline").get(),
@@ -60,7 +60,7 @@ return {
 	},
 	{
 		"nvim-tree/nvim-tree.lua",
-		dependencies = { "kyazdani42/nvim-web-devicons" },
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
 		keys = {
 			{ "<leader>f", ":NvimTreeToggle<CR>", desc = "nvim tree" },

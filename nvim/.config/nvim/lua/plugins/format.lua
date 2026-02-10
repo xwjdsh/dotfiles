@@ -1,12 +1,11 @@
 return {
 	{
 		"stevearc/conform.nvim",
-		after = { "mason" },
+		dependencies = { "williamboman/mason.nvim" },
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				python = { "ruff_format" },
-				rust = { "rustfmt" },
 				javascript = { "prettier" },
 				typescript = { "prettier" },
 				json = { "prettier" },
@@ -16,10 +15,13 @@ return {
 				go = { "goimports", "gofmt" },
 				sh = { "shfmt" },
 			},
-			format_on_save = {
-				timeout_ms = 500,
-				lsp_fallback = true,
-			},
+			format_on_save = function(bufnr)
+				local ft = vim.bo[bufnr].filetype
+				if ft ~= "go" then
+					return false
+				end
+				return { timeout_ms = 500, lsp_fallback = true }
+			end,
 			formatters = {
 				goimports = {
 					prepend_args = { "-local", "github.com/xwjdsh" },
@@ -38,7 +40,7 @@ return {
 	},
 	{
 		"zapling/mason-conform.nvim",
-		after = { "mason", "conform" },
+		dependencies = { "williamboman/mason.nvim", "stevearc/conform.nvim" },
 		opts = {},
 	},
 }

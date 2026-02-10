@@ -34,6 +34,8 @@ brew "pinentry-mac"
 brew "ripgrep"
 # Cross-shell prompt for astronauts
 brew "starship"
+# Code-searching tool similar to ack
+brew "the_silver_searcher"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Terminal multiplexer
