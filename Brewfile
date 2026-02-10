@@ -52,6 +52,8 @@ brew "zsh-autosuggestions"
 brew "zsh-syntax-highlighting"
 # Anthropic's official Claude AI desktop app
 cask "claude"
+# Anthropic Claude Code CLI
+cask "claude-code"
 # Free app that makes your Internet safer
 cask "cloudflare-warp"
 # OpenAI's coding agent that runs in your terminal
