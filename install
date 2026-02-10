@@ -8,7 +8,7 @@ cd "$DOTFILES_DIR"
 command -v stow >/dev/null || brew install stow
 
 # Stow packages
-PACKAGES=(zsh git tmux nvim bat atuin zed gnupg ghostty starship)
+PACKAGES=(zsh git tmux nvim bat zed gnupg ghostty starship)
 for pkg in "${PACKAGES[@]}"; do
   echo "📦 Stowing $pkg..."
   stow -R --target="$HOME" "$pkg"

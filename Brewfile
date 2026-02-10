@@ -1,6 +1,5 @@
+tap "homebrew/core"
 tap "steipete/tap"
-
-brew "zoxide"
 # Improved shell history for zsh, bash, fish and nushell
 brew "atuin"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -41,30 +40,34 @@ brew "stow"
 brew "tmux"
 # Plugin manager for tmux
 brew "tpm"
+# Shell extension to navigate your filesystem faster
+brew "zoxide"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
 # Anthropic's official Claude AI desktop app
 cask "claude"
-# OpenAI Codex CLI
+# Free app that makes your Internet safer
+cask "cloudflare-warp"
+# OpenAI's coding agent that runs in your terminal
 cask "codex"
-# Menu bar app showing usage stats for AI coding assistants
-cask "codexbar"
+# Menu bar usage monitor for Codex and Claude
+cask "steipete/tap/codexbar"
 # English dictionary
 cask "eudic"
 cask "font-fira-code-nerd-font"
 cask "font-monaspice-nerd-font"
 # GIT client
 cask "fork"
+# Terminal emulator that uses platform-native UI and GPU acceleration
+cask "ghostty"
 # Cross-platform Git credential storage for multiple hosting providers
 cask "git-credential-manager"
 # Web browser
 cask "google-chrome"
 # Client for the Google Drive storage service
 cask "google-drive"
-# Fast, native, feature-rich terminal emulator
-cask "ghostty"
 # Menu bar manager
 cask "jordanbaird-ice"
 # Calculator and converter application
@@ -85,6 +88,8 @@ cask "telegram"
 cask "visual-studio-code"
 # Free messaging and calling application
 cask "wechat"
+# Multiplayer code editor
+cask "zed"
 vscode "github.copilot"
 vscode "github.copilot-chat"
 vscode "golang.go"
