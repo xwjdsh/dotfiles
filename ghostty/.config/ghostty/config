@@ -3,6 +3,8 @@
 
 # Font
 font-family = MonaspiceRn Nerd Font Mono
+# Ghostty 通过重复 font-family 指定 fallback（不是逗号分隔）
+font-family = Maple Mono NF CN
 font-size = 15
 font-thicken = true
 

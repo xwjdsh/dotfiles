@@ -65,6 +65,7 @@ cask "steipete/tap/codexbar"
 # English dictionary
 cask "eudic"
 cask "font-fira-code-nerd-font"
+cask "font-maple-mono-nf-cn"
 cask "font-monaspice-nerd-font"
 # GIT client
 cask "fork"
