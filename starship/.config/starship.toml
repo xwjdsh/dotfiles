@@ -2,7 +2,7 @@
 # https://starship.rs/config/
 
 # Simple single-line format
-format = """$directory$git_branch$git_status$golang$nodejs$python$rust$character"""
+format = """$directory$git_branch$git_status$golang$nodejs$python$character"""
 
 # Timeout for commands
 command_timeout = 500
@@ -38,14 +38,19 @@ symbol = " "
 style = "bold green"
 format = "[$symbol($version )]($style)"
 
+
 [python]
+python_binary = [
+  [
+    "uv",
+    "run",
+    "--no-project",
+    "--no-python-downloads",
+    "python",
+  ],
+]
 symbol = " "
 style = "bold yellow"
-format = "[$symbol($version )]($style)"
-
-[rust]
-symbol = " "
-style = "bold red"
 format = "[$symbol($version )]($style)"
 
 [cmd_duration]
