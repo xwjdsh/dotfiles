@@ -6,6 +6,8 @@ brew "atuin"
 brew "bat"
 # Cloudflare Tunnel client (formerly Argo Tunnel)
 brew "cloudflared"
+# GitHub Copilot CLI
+brew "copilot"
 # Simple, fast and user-friendly alternative to find
 brew "fd"
 # Command-line fuzzy finder written in Go
