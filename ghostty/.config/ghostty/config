@@ -77,3 +77,7 @@ scrollback-limit = 10000
 
 # Mouse
 mouse-hide-while-typing = true
+# 允许滚轮直接滚动终端滚动缓冲区
+mouse-scroll-multiplier = 1
+# 按住 Shift 不强制把鼠标事件交给程序（便于直接滚动）
+mouse-shift-capture = false
