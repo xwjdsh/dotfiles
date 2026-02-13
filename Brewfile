@@ -27,6 +27,8 @@ brew "lsd"
 brew "neovim"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
+# Your own personal AI assistant
+brew "openclaw-cli"
 # Google Gemini CLI
 brew "gemini-cli"
 # Pinentry for GPG on Mac
