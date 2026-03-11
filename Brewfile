@@ -27,8 +27,6 @@ brew "lsd"
 brew "neovim"
 # Open-source, cross-platform JavaScript runtime environment
 brew "node"
-# Node.js 18 LTS (legacy compatibility)
-brew "node@18"
 # Your own personal AI assistant
 brew "openclaw-cli"
 # Google Gemini CLI
