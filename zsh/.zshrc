@@ -54,4 +54,4 @@ eval "$(zoxide init zsh)"
 eval "$(starship init zsh)"
 
 # Machine-specific overrides (not tracked)
-[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+[[ ! -f ~/.zshrc.local ]] || source ~/.zshrc.local
