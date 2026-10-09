@@ -28,6 +28,18 @@ if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
+# --- Migration: drop dangling symlinks left from the pre-packages/ layout ----
+# (stow cannot take over links that point outside the new stow dir.)
+for dir in packages/*/; do
+  while IFS= read -r -d '' src; do
+    target="$HOME/${src#"$dir"}"
+    if [[ -L "$target" && ! -e "$target" ]]; then
+      echo "🧹 Removing dangling link $target"
+      rm "$target"
+    fi
+  done < <(find "$dir" -mindepth 1 -print0)
+done
+
 # --- Stow every package under packages/ -------------------------------------
 # (stow refuses to overwrite existing real files; move them away first.)
 for dir in packages/*/; do
