@@ -1,7 +1,7 @@
 return {
 	{
 		"stevearc/conform.nvim",
-		dependencies = { "williamboman/mason.nvim" },
+		dependencies = { "mason-org/mason.nvim" },
 		opts = {
 			formatters_by_ft = {
 				lua = { "stylua" },
@@ -15,6 +15,7 @@ return {
 				go = { "goimports", "gofmt" },
 				sh = { "shfmt" },
 			},
+			-- Only Go is formatted on save; other filetypes use <leader>fm.
 			format_on_save = function(bufnr)
 				local ft = vim.bo[bufnr].filetype
 				if ft ~= "go" then
@@ -40,7 +41,7 @@ return {
 	},
 	{
 		"zapling/mason-conform.nvim",
-		dependencies = { "williamboman/mason.nvim", "stevearc/conform.nvim" },
+		dependencies = { "mason-org/mason.nvim", "stevearc/conform.nvim" },
 		opts = {},
 	},
 }

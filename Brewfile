@@ -13,6 +13,8 @@ brew "fzf"
 brew "git-crypt"
 # Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Git extension for versioning large files (required by .gitconfig lfs filter)
+brew "git-lfs"
 # GNU Privacy Guard (OpenPGP)
 brew "gnupg"
 # Open source programming language to build simple/reliable/efficient software
@@ -21,6 +23,10 @@ brew "go"
 brew "golangci-lint"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Terminal UI for docker and docker-compose
+brew "lazydocker"
+# Simple terminal UI for git commands
+brew "lazygit"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
 # Ambitious Vim-fork focused on extensibility and agility
@@ -37,8 +43,6 @@ brew "pinentry-mac"
 brew "ripgrep"
 # Cross-shell prompt for astronauts
 brew "starship"
-# Code-searching tool similar to ack
-brew "the_silver_searcher"
 # Organize software neatly under a single directory tree (e.g. /usr/local)
 brew "stow"
 # Terminal multiplexer

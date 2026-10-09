@@ -10,7 +10,7 @@
 # git-delta config
 [core]
   pager = delta
-  editor = vim
+  editor = nvim
 [interactive]
   diffFilter = delta --color-only
 
@@ -19,7 +19,7 @@
   navigate = true    # use n and N to move between diff sections
   side-by-side = true
 [merge]
-  conflictstyle = diff3
+  conflictstyle = zdiff3
 [diff]
   colorMoved = default
   wsErrorHighlight = all
@@ -33,3 +33,13 @@
   insteadOf = https://github.com/
 [log]
   showSignature = true
+[init]
+  defaultBranch = main
+[pull]
+  rebase = true
+[push]
+  autoSetupRemote = true
+[fetch]
+  prune = true
+[rerere]
+  enabled = true
