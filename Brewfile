@@ -110,8 +110,6 @@ cask "visual-studio-code"
 cask "wechat"
 # Multiplayer code editor
 cask "zed"
-vscode "github.copilot"
-vscode "github.copilot-chat"
 vscode "golang.go"
 vscode "ms-azuretools.vscode-containers"
 vscode "ms-azuretools.vscode-docker"
