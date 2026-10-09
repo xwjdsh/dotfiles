@@ -28,6 +28,9 @@ fi
 
 # --- Stow every package under packages/ -------------------------------------
 # (stow refuses to overwrite existing real files; move them away first.)
+# Pre-create ~/.local/bin so stow links files into it instead of linking the
+# whole directory into this repo.
+mkdir -p "$HOME/.local/bin"
 for dir in packages/*/; do
   pkg="$(basename "$dir")"
   echo "📦 Stowing $pkg..."

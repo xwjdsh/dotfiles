@@ -1,0 +1,121 @@
+#!/usr/bin/env bash
+# Install software and record it in the dotfiles Brewfile.
+#
+#   brew add wget                 # formula (or cask, auto-detected)
+#   brew add --cask proxyman
+#   brew add steipete/tap/codexbar
+#   brew add --vscode eamodio.gitlens
+#   brew add --go golang.org/x/tools/cmd/deadcode
+#
+# Being named brew-add on $PATH makes it available as `brew add`.
+# Set BREWFILE to use a different Brewfile.
+set -euo pipefail
+
+script="$(realpath "$0")"
+BREWFILE="${BREWFILE:-$(cd "$(dirname "$script")/../../../.." && pwd)/Brewfile}"
+
+usage() {
+  sed -n '2,11p' "$script" | sed 's/^# \{0,1\}//'
+  exit "${1:-0}"
+}
+
+[[ -f "$BREWFILE" ]] || { echo "Brewfile not found: $BREWFILE" >&2; exit 1; }
+
+type=""
+names=()
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --formula) type=brew ;;
+    --cask) type=cask ;;
+    --vscode) type=vscode ;;
+    --go) type=go ;;
+    -h|--help) usage ;;
+    -*) echo "unknown option: $1" >&2; usage 1 >&2 ;;
+    *) names+=("$1") ;;
+  esac
+  shift
+done
+[[ ${#names[@]} -gt 0 ]] || usage 1 >&2
+
+# in_brewfile <type> <name>
+in_brewfile() {
+  grep -qE "^$1 \"$2\"" "$BREWFILE"
+}
+
+# add_entry <type> <name> [description]
+# Inserts after the last entry of the same type, so sections stay grouped.
+add_entry() {
+  local kind="$1" name="$2" desc="${3:-}"
+  if in_brewfile "$kind" "$name"; then
+    echo "• $kind \"$name\" is already in the Brewfile"
+    return
+  fi
+  local tmp
+  tmp="$(mktemp)"
+  awk -v kind="$kind" -v entry="$kind \"$name\"" -v desc="$desc" '
+    { lines[NR] = $0 }
+    index($0, kind " \"") == 1 { last = NR }
+    END {
+      for (i = 1; i <= NR; i++) {
+        print lines[i]
+        if (i == last) { if (desc != "") print "# " desc; print entry }
+      }
+      if (!last) { if (desc != "") print "# " desc; print entry }
+    }
+  ' "$BREWFILE" >"$tmp"
+  cat "$tmp" >"$BREWFILE"
+  rm -f "$tmp"
+  echo "✓ added $kind \"$name\" to the Brewfile"
+}
+
+# brew_desc <formula|cask> <name>
+brew_desc() {
+  brew info --json=v2 "--$1" "$2" 2>/dev/null |
+    jq -r "(.formulae + .casks)[0].desc // empty"
+}
+
+for name in "${names[@]}"; do
+  kind="$type"
+
+  if [[ -z "$kind" ]]; then
+    has_formula=0 has_cask=0
+    brew info --formula "$name" >/dev/null 2>&1 && has_formula=1
+    brew info --cask "$name" >/dev/null 2>&1 && has_cask=1
+    if [[ $has_formula == 1 && $has_cask == 1 ]]; then
+      echo "\"$name\" is both a formula and a cask; rerun with --formula or --cask" >&2
+      exit 1
+    elif [[ $has_formula == 1 ]]; then
+      kind=brew
+    elif [[ $has_cask == 1 ]]; then
+      kind=cask
+    else
+      echo "no formula or cask named \"$name\"" >&2
+      exit 1
+    fi
+  fi
+
+  case "$kind" in
+    brew|cask)
+      flag=$([[ $kind == brew ]] && echo formula || echo cask)
+      # don't let `brew install` upgrade something that's already there
+      if brew list "--$flag" "$name" >/dev/null 2>&1; then
+        echo "• $name is already installed"
+      else
+        brew install "--$flag" "$name"
+      fi
+      # user/repo/name lives in a third-party tap; record the tap too
+      if [[ "$name" == */*/* ]]; then
+        add_entry tap "${name%/*}"
+      fi
+      add_entry "$kind" "$name" "$(brew_desc "$flag" "$name")"
+      ;;
+    vscode)
+      code --install-extension "$name"
+      add_entry vscode "$name"
+      ;;
+    go)
+      go install "${name%@*}@latest"
+      add_entry go "${name%@*}"
+      ;;
+  esac
+done

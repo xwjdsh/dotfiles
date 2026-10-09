@@ -16,8 +16,11 @@ Each directory under `packages/` is a stow *package* that mirrors the layout of 
 | `starship` | Prompt                                     |
 | `atuin`    | Shell history                              |
 | `bat`, `zed`, `gnupg` | Tool configs                    |
+| `bin`      | Scripts in `~/.local/bin` (`brew-add`)     |
 
 `Brewfile` lists all Homebrew formulae, casks, VS Code extensions and Go tools.
+Use `brew add <name>` (`--cask`, `--vscode`, `--go`) to install something and
+record it in the Brewfile in one step.
 
 ## Install
 
