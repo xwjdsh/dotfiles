@@ -1,8 +1,12 @@
 local ls = {
 	lua_ls = {
 		on_init = function(client)
-			local path = client.workspace_folders[1].name
-			if not vim.loop.fs_stat(path .. "/.luarc.json") and not vim.loop.fs_stat(path .. "/.luarc.jsonc") then
+			local folders = client.workspace_folders
+			if not folders then
+				return true
+			end
+			local path = folders[1].name
+			if not vim.uv.fs_stat(path .. "/.luarc.json") and not vim.uv.fs_stat(path .. "/.luarc.jsonc") then
 				client.config.settings = vim.tbl_deep_extend("force", client.config.settings, {
 					Lua = {
 						runtime = {
@@ -34,19 +38,19 @@ local ls = {
 return {
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = { "williamboman/mason-lspconfig.nvim" },
+		dependencies = { "mason-org/mason-lspconfig.nvim" },
 		config = function()
-			-- Set up lspconfig.
-			local lspconfig = require("lspconfig")
-			for l, opts in pairs(ls) do
-				lspconfig[l].setup(opts)
+			-- Configure and enable servers (Neovim 0.11+ API; nvim-lspconfig supplies defaults).
+			for name, opts in pairs(ls) do
+				vim.lsp.config(name, opts)
+				vim.lsp.enable(name)
 			end
 
 			-- Global mappings.
 			-- See `:help vim.diagnostic.*` for documentation on any of the below functions
 			vim.keymap.set("n", "<space>e", vim.diagnostic.open_float)
-			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
-			vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+			vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1, float = true }) end)
+			vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count = 1, float = true }) end)
 			vim.keymap.set("n", "<space>q", vim.diagnostic.setloclist)
 
 			-- Use LspAttach autocommand to only map the following keys
@@ -64,7 +68,7 @@ return {
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 					vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 					vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-					vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, opts)
+					vim.keymap.set("n", "gK", vim.lsp.buf.signature_help, opts)
 					vim.keymap.set("n", "<space>wa", vim.lsp.buf.add_workspace_folder, opts)
 					vim.keymap.set("n", "<space>wr", vim.lsp.buf.remove_workspace_folder, opts)
 					vim.keymap.set("n", "<space>wl", function()
@@ -82,17 +86,17 @@ return {
 		end,
 	},
 	{
-		"williamboman/mason-lspconfig.nvim",
+		"mason-org/mason-lspconfig.nvim",
 		dependencies = {
-			"williamboman/mason.nvim",
+			"mason-org/mason.nvim",
 		},
-		config = function(_, opts)
-			opts.ensure_installed = {}
-			for l in pairs(ls) do
-				table.insert(opts.ensure_installed, l)
-			end
+		config = function()
 			require("mason").setup({})
-			require("mason-lspconfig").setup(opts)
+			require("mason-lspconfig").setup({
+				ensure_installed = vim.tbl_keys(ls),
+				-- servers are enabled explicitly via vim.lsp.enable above
+				automatic_enable = false,
+			})
 		end,
 	},
 }

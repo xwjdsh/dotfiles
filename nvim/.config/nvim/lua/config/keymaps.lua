@@ -48,28 +48,16 @@ map("n", "so", "<C-w>o", { desc = "Close others", remap = true })
 map("n", "sv", ":vsp<CR>", { desc = "Split vertical", remap = true })
 map("n", "sh", ":sp<CR>", { desc = "Split horizontal", remap = true })
 
-function LAZYGIT_TOGGLE()
-	local Terminal = require("toggleterm.terminal").Terminal
-	local lazygit = Terminal:new({
-		cmd = "lazygit",
-		dir = "git_dir",
-		direction = "float",
-	})
-	lazygit:toggle()
-end
-
-function LAZYDOCKER_TOGGLE()
-	local Terminal = require("toggleterm.terminal").Terminal
-	local lazydocker = Terminal:new({
-		cmd = "lazydocker",
-		direction = "float",
-	})
-	lazydocker:toggle()
+local function float_term(cmd, opts)
+	return function()
+		local Terminal = require("toggleterm.terminal").Terminal
+		Terminal:new(vim.tbl_extend("force", { cmd = cmd, direction = "float" }, opts or {})):toggle()
+	end
 end
 
 -- lazygit && lazydocker
-map("n", "<leader>gg", "<cmd>lua LAZYGIT_TOGGLE()<CR>", { desc = "lazygit", noremap = true, silent = true })
-map("n", "<leader>dd", "<cmd>lua LAZYDOCKER_TOGGLE()<CR>", { desc = "lazydocker", noremap = true, silent = true })
+map("n", "<leader>gg", float_term("lazygit", { dir = "git_dir" }), { desc = "lazygit", silent = true })
+map("n", "<leader>dd", float_term("lazydocker"), { desc = "lazydocker", silent = true })
 
 vim.api.nvim_create_user_command("FormatDisable", function(args)
 	if args.bang then

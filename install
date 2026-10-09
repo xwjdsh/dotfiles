@@ -1,20 +1,50 @@
 #!/usr/bin/env bash
+# Bootstrap this dotfiles repo: install tools, then symlink every package with stow.
 set -euo pipefail
 
 DOTFILES_DIR="$(cd "$(dirname "$0")" && pwd)"
 cd "$DOTFILES_DIR"
 
-# Install stow if missing
-command -v stow >/dev/null || brew install stow
+OS="$(uname -s)"
 
-# Stow packages
-PACKAGES=(zsh git tmux nvim bat zed gnupg ghostty starship)
-for pkg in "${PACKAGES[@]}"; do
+# --- Homebrew / packages ----------------------------------------------------
+if command -v brew >/dev/null; then
+  command -v stow >/dev/null || brew install stow
+  if [[ "${SKIP_BREW:-0}" != "1" ]]; then
+    echo "🍺 brew bundle..."
+    brew bundle --file="$DOTFILES_DIR/Brewfile"
+  fi
+elif ! command -v stow >/dev/null; then
+  echo "stow not found and Homebrew is unavailable; install stow first." >&2
+  exit 1
+fi
+
+# --- oh-my-zsh (required by zsh/.zshrc) ---------------------------------------
+if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
+  echo "💫 Installing oh-my-zsh..."
+  RUNZSH=no CHSH=no KEEP_ZSHRC=yes \
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+fi
+
+# --- Stow every package (every top-level directory except hidden ones) -------
+# (stow refuses to overwrite existing real files; move them away first.)
+for dir in */; do
+  pkg="${dir%/}"
   echo "📦 Stowing $pkg..."
   stow -R --target="$HOME" "$pkg"
 done
 
-# Manual symlinks
-ln -sfn "$HOME/Library/Mobile Documents/com~apple~CloudDocs" "$HOME/icloud"
+# --- tmux plugins -------------------------------------------------------------
+tpm_install="${HOMEBREW_PREFIX:-$(brew --prefix 2>/dev/null || true)}/opt/tpm/share/tpm/bin/install_plugins"
+if [[ -x "$tpm_install" ]]; then
+  echo "🧩 Installing tmux plugins..."
+  "$tpm_install" || true
+fi
+
+# --- macOS-only ---------------------------------------------------------------
+if [[ "$OS" == "Darwin" ]]; then
+  icloud="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
+  [[ -d "$icloud" ]] && ln -sfn "$icloud" "$HOME/icloud"
+fi
 
 echo "✅ All done!"
