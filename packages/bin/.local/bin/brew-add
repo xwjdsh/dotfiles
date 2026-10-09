@@ -4,8 +4,6 @@
 #   brew add wget                 # formula (or cask, auto-detected)
 #   brew add --cask proxyman
 #   brew add steipete/tap/codexbar
-#   brew add --vscode eamodio.gitlens
-#   brew add --go golang.org/x/tools/cmd/deadcode
 #
 # Being named brew-add on $PATH makes it available as `brew add`.
 # Set BREWFILE to use a different Brewfile.
@@ -15,7 +13,7 @@ script="$(realpath "$0")"
 BREWFILE="${BREWFILE:-$(cd "$(dirname "$script")/../../../.." && pwd)/Brewfile}"
 
 usage() {
-  sed -n '2,11p' "$script" | sed 's/^# \{0,1\}//'
+  sed -n '2,9p' "$script" | sed 's/^# \{0,1\}//'
   exit "${1:-0}"
 }
 
@@ -27,8 +25,6 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --formula) type=brew ;;
     --cask) type=cask ;;
-    --vscode) type=vscode ;;
-    --go) type=go ;;
     -h|--help) usage ;;
     -*) echo "unknown option: $1" >&2; usage 1 >&2 ;;
     *) names+=("$1") ;;
@@ -108,14 +104,6 @@ for name in "${names[@]}"; do
         add_entry tap "${name%/*}"
       fi
       add_entry "$kind" "$name" "$(brew_desc "$flag" "$name")"
-      ;;
-    vscode)
-      code --install-extension "$name"
-      add_entry vscode "$name"
-      ;;
-    go)
-      go install "${name%@*}@latest"
-      add_entry go "${name%@*}"
       ;;
   esac
 done

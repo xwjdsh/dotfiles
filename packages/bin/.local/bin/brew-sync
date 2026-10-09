@@ -1,0 +1,70 @@
+#!/usr/bin/env bash
+# Bring this machine in line with the dotfiles Brewfile.
+#
+#   brew sync           # update Homebrew, install missing + upgrade outdated, clean up
+#   brew sync --check   # only report what is missing, outdated or not in the Brewfile
+#
+# Being named brew-sync on $PATH makes it available as `brew sync`.
+# Set BREWFILE to use a different Brewfile.
+set -euo pipefail
+
+script="$(realpath "$0")"
+BREWFILE="${BREWFILE:-$(cd "$(dirname "$script")/../../../.." && pwd)/Brewfile}"
+
+usage() {
+  sed -n '2,8p' "$script" | sed 's/^# \{0,1\}//'
+  exit "${1:-0}"
+}
+
+[[ -f "$BREWFILE" ]] || { echo "Brewfile not found: $BREWFILE" >&2; exit 1; }
+
+check=0
+case "${1:-}" in
+  "") ;;
+  --check) check=1 ;;
+  -h|--help) usage ;;
+  *) echo "unknown option: $1" >&2; usage 1 >&2 ;;
+esac
+
+# report_extras: installed software the Brewfile doesn't know about
+report_extras() {
+  local extras
+  # `brew bundle cleanup` without --force is a dry run listing what it would remove
+  extras="$(brew bundle cleanup --file="$BREWFILE" 2>/dev/null | awk '
+    /^Would `brew cleanup`/ { exit }
+    /^Would uninstall / { sub(/^Would uninstall /, ""); print "  " $0; next }
+    /^Would untap/ { print "  taps:"; next }
+    /^Would |^Run / { exit }
+    { print "    " $0 }
+  ' || true)"  # it exits non-zero whenever it finds something
+  if [[ -n "$extras" ]]; then
+    echo
+    echo "Installed but not in the Brewfile (brew add to keep, brew drop to remove):"
+    echo "$extras"
+  fi
+}
+
+if [[ $check == 1 ]]; then
+  brew bundle check --verbose --file="$BREWFILE" || true
+  outdated="$(brew outdated --verbose)"
+  if [[ -n "$outdated" ]]; then
+    echo
+    echo "Outdated:"
+    echo "$outdated" | sed 's/^/  /'
+  fi
+  report_extras
+  exit 0
+fi
+
+echo "🍺 Updating Homebrew..."
+brew update
+
+echo "📦 Installing and upgrading from the Brewfile..."
+brew bundle install --file="$BREWFILE"
+
+echo "🧹 Cleaning up..."
+brew cleanup
+brew autoremove
+
+report_extras
+echo "✅ In sync with $BREWFILE"

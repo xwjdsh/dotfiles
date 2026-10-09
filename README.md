@@ -16,23 +16,32 @@ Each directory under `packages/` is a stow *package* that mirrors the layout of 
 | `starship` | Prompt                                     |
 | `atuin`    | Shell history                              |
 | `bat`, `zed`, `gnupg` | Tool configs                    |
-| `bin`      | Scripts in `~/.local/bin` (`brew-add`)     |
+| `bin`      | Scripts in `~/.local/bin` (`brew-add`, `brew-drop`, `brew-sync`)   |
 
-`Brewfile` lists all Homebrew formulae, casks, VS Code extensions and Go tools.
-Use `brew add <name>` (`--cask`, `--vscode`, `--go`) to install something and
+`Brewfile` lists all Homebrew formulae and casks.
+Use `brew add <name>` (`--cask` to force a cask) to install something and
 record it in the Brewfile in one step.
+`brew drop <name>` does the reverse: uninstalls it (casks with `--zap`), removes
+orphaned dependencies and deletes its Brewfile entry.
+`brew sync` updates Homebrew, installs anything missing, upgrades outdated
+entries and cleans up; `brew sync --check` only reports what is missing, outdated
+or installed without being in the Brewfile.
 
 ## Install
 
 ```sh
 git clone git@github.com:xwjdsh/dotfiles.git ~/dotfiles
 cd ~/dotfiles
-./install            # SKIP_BREW=1 ./install to skip `brew bundle`
+./install            # Homebrew, stow, oh-my-zsh, links every package
+brew sync            # install everything in the Brewfile
 ```
 
-`install` runs `brew bundle`, installs oh-my-zsh if missing, stows **every**
-directory under `packages/` (new packages are picked up automatically), installs tmux
-plugins via tpm, and links iCloud Drive to `~/icloud` on macOS.
+Then start tmux and press `prefix + I` to install its plugins (tpm comes from
+the Brewfile).
+
+`install` installs Homebrew, stow and oh-my-zsh if missing, stows **every**
+directory under `packages/` (new packages are picked up automatically) and links
+iCloud Drive to `~/icloud` on macOS.
 
 Stow refuses to overwrite existing real files — move an existing `~/.zshrc`
 etc. out of the way first.

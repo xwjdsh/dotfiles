@@ -34,6 +34,9 @@ alias lt='ls --tree'
 
 alias gs='git status'
 
+# muscle memory from the_silver_searcher
+alias ag='rg'
+
 alias lzd='lazydocker'
 alias lzg='lazygit'
 

@@ -61,6 +61,8 @@ brew "zoxide"
 brew "zsh-autosuggestions"
 # Fish shell like syntax highlighting for zsh
 brew "zsh-syntax-highlighting"
+# Go formatter that additionally inserts import statements
+brew "goimports"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Anthropic Claude Code CLI
@@ -110,17 +112,7 @@ cask "stats"
 cask "tailscale-app"
 # Messaging app with a focus on speed and security
 cask "telegram"
-# Open-source code editor
-cask "visual-studio-code"
 # Free messaging and calling application
 cask "wechat"
 # Multiplayer code editor
 cask "zed"
-vscode "golang.go"
-vscode "ms-azuretools.vscode-containers"
-vscode "ms-azuretools.vscode-docker"
-vscode "tamasfe.even-better-toml"
-vscode "vscodevim.vim"
-go "github.com/air-verse/air"
-go "golang.org/x/tools/cmd/goimports"
-go "golang.org/x/tools/gopls"

@@ -1,0 +1,118 @@
+#!/usr/bin/env bash
+# Uninstall software, clean up after it, and remove it from the dotfiles Brewfile.
+#
+#   brew drop wget                # formula or cask, auto-detected
+#   brew drop --cask proxyman
+#   brew drop steipete/tap/codexbar
+#
+# Casks are uninstalled with --zap (app data too); orphaned dependencies are
+# removed. Being named brew-drop on $PATH makes it available as `brew drop`.
+# Set BREWFILE to use a different Brewfile.
+set -euo pipefail
+
+script="$(realpath "$0")"
+BREWFILE="${BREWFILE:-$(cd "$(dirname "$script")/../../../.." && pwd)/Brewfile}"
+PACKAGES_DIR="$(dirname "$BREWFILE")/packages"
+
+usage() {
+  sed -n '2,10p' "$script" | sed 's/^# \{0,1\}//'
+  exit "${1:-0}"
+}
+
+[[ -f "$BREWFILE" ]] || { echo "Brewfile not found: $BREWFILE" >&2; exit 1; }
+
+type=""
+names=()
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --formula) type=brew ;;
+    --cask) type=cask ;;
+    -h|--help) usage ;;
+    -*) echo "unknown option: $1" >&2; usage 1 >&2 ;;
+    *) names+=("$1") ;;
+  esac
+  shift
+done
+[[ ${#names[@]} -gt 0 ]] || usage 1 >&2
+
+# in_brewfile <type> <name>
+in_brewfile() {
+  grep -qE "^$1 \"$2\"" "$BREWFILE"
+}
+
+# remove_entry <type> <name>
+# Drops the entry and the description comment directly above it.
+remove_entry() {
+  local kind="$1" name="$2"
+  if ! in_brewfile "$kind" "$name"; then
+    echo "• $kind \"$name\" was not in the Brewfile"
+    return
+  fi
+  local tmp
+  tmp="$(mktemp)"
+  awk -v entry="$kind \"$name\"" '
+    { lines[NR] = $0 }
+    index($0, entry) == 1 { drop[NR] = 1; if (lines[NR - 1] ~ /^# /) drop[NR - 1] = 1 }
+    END { for (i = 1; i <= NR; i++) if (!drop[i]) print lines[i] }
+  ' "$BREWFILE" >"$tmp"
+  cat "$tmp" >"$BREWFILE"
+  rm -f "$tmp"
+  echo "✓ removed $kind \"$name\" from the Brewfile"
+}
+
+for name in "${names[@]}"; do
+  kind="$type"
+
+  if [[ -z "$kind" ]]; then
+    # prefer what the Brewfile says, then what is installed
+    in_brewfile brew "$name" && kind=brew
+    in_brewfile cask "$name" && kind=${kind:+both}${kind:-cask}
+    if [[ -z "$kind" ]]; then
+      brew list --formula "$name" >/dev/null 2>&1 && kind=brew
+      brew list --cask "$name" >/dev/null 2>&1 && kind=${kind:+both}${kind:-cask}
+    fi
+    if [[ "$kind" == both ]]; then
+      echo "\"$name\" is both a formula and a cask; rerun with --formula or --cask" >&2
+      exit 1
+    elif [[ -z "$kind" ]]; then
+      echo "\"$name\" is neither installed nor in the Brewfile" >&2
+      exit 1
+    fi
+  fi
+
+  flag=$([[ $kind == brew ]] && echo formula || echo cask)
+  if brew list "--$flag" "$name" >/dev/null 2>&1; then
+    if [[ $kind == cask ]]; then
+      # --zap can fail on files the terminal isn't allowed to touch (Full Disk
+      # Access); make sure the cask itself still ends up uninstalled.
+      if ! brew uninstall --cask --zap "$name"; then
+        echo "! zap could not remove everything; leftover files may remain" >&2
+        brew list --cask "$name" >/dev/null 2>&1 && brew uninstall --cask --force "$name"
+      fi
+    else
+      brew uninstall --formula "$name"
+    fi
+  else
+    echo "• $name is not installed"
+  fi
+
+  remove_entry "$kind" "$name"
+
+  # user/repo/name came from a third-party tap; drop the tap once nothing uses it
+  if [[ "$name" == */*/* ]]; then
+    tap="${name%/*}"
+    if ! grep -qE "^(brew|cask) \"$tap/" "$BREWFILE"; then
+      remove_entry tap "$tap"
+      if brew tap | grep -qx "$tap"; then
+        brew untap "$tap" || echo "• kept tap $tap (other installed software still uses it)"
+      fi
+    fi
+  fi
+
+  short="${name##*/}"
+  if [[ -d "$PACKAGES_DIR/$short" ]]; then
+    echo "! packages/$short still holds its config; unstow and delete it if no longer needed"
+  fi
+done
+
+brew autoremove
