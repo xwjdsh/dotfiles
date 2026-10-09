@@ -28,9 +28,25 @@ fi
 # Pre-create ~/.local/bin so stow links files into it instead of linking the
 # whole directory into this repo.
 mkdir -p "$HOME/.local/bin"
+
+# stow only recognises links pointing into its own stow dir, so links left by an
+# earlier layout read as "not owned by stow" and abort the run. Drop the dead
+# ones first -- they point at paths that no longer exist anyway.
+prune_dead_links() {
+  local rel target
+  while IFS= read -r rel; do
+    target="$HOME/$rel"
+    if [[ -L "$target" && ! -e "$target" ]]; then
+      echo "   🧹 Removing dead link ~/$rel"
+      rm "$target"
+    fi
+  done < <(cd "packages/$1" && find . -mindepth 1 | sed 's|^\./||')
+}
+
 for dir in packages/*/; do
   pkg="$(basename "$dir")"
   echo "📦 Stowing $pkg..."
+  prune_dead_links "$pkg"
   stow -R -d packages --target="$HOME" "$pkg"
 done
 
