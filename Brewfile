@@ -29,6 +29,8 @@ brew "lazydocker"
 brew "lazygit"
 # Clone of ls with colorful output, file type icons, and more
 brew "lsd"
+# Deep clean and optimize your Mac
+brew "mole"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Open-source, cross-platform JavaScript runtime environment
@@ -51,6 +53,8 @@ brew "tmux"
 brew "uv"
 # Plugin manager for tmux
 brew "tpm"
+# Command-line client for WebSockets
+brew "websocat"
 # Shell extension to navigate your filesystem faster
 brew "zoxide"
 # Fish-like fast/unobtrusive autosuggestions for zsh
@@ -71,6 +75,8 @@ cask "copilot-cli"
 cask "steipete/tap/codexbar"
 # Antigravity desktop app
 cask "antigravity"
+# Open source IDE for exploring and testing APIs
+cask "bruno"
 # English dictionary
 cask "eudic"
 cask "font-fira-code-nerd-font"
