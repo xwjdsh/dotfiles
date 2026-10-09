@@ -12,7 +12,9 @@ if command -v brew >/dev/null; then
   command -v stow >/dev/null || brew install stow
   if [[ "${SKIP_BREW:-0}" != "1" ]]; then
     echo "🍺 brew bundle..."
-    brew bundle --file="$DOTFILES_DIR/Brewfile"
+    # A single failing formula/cask/extension must not stop the stow step below.
+    brew bundle --file="$DOTFILES_DIR/Brewfile" ||
+      echo "⚠️  brew bundle reported failures (see above); continuing." >&2
   fi
 elif ! command -v stow >/dev/null; then
   echo "stow not found and Homebrew is unavailable; install stow first." >&2
