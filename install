@@ -26,12 +26,12 @@ if [[ ! -d "$HOME/.oh-my-zsh" ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 fi
 
-# --- Stow every package (every top-level directory except hidden ones) -------
+# --- Stow every package under packages/ -------------------------------------
 # (stow refuses to overwrite existing real files; move them away first.)
-for dir in */; do
-  pkg="${dir%/}"
+for dir in packages/*/; do
+  pkg="$(basename "$dir")"
   echo "📦 Stowing $pkg..."
-  stow -R --target="$HOME" "$pkg"
+  stow -R -d packages --target="$HOME" "$pkg"
 done
 
 # --- tmux plugins -------------------------------------------------------------

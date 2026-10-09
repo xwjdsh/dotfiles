@@ -1,8 +1,8 @@
 # dotfiles
 
 Personal macOS profile, managed with [GNU Stow](https://www.gnu.org/software/stow/).
-Each top-level directory is a stow *package* that mirrors the layout of `$HOME`
-(e.g. `zsh/.zshrc` → `~/.zshrc`).
+Each directory under `packages/` is a stow *package* that mirrors the layout of `$HOME`
+(e.g. `packages/zsh/.zshrc` → `~/.zshrc`).
 
 ## Layout
 
@@ -28,7 +28,7 @@ cd ~/dotfiles
 ```
 
 `install` runs `brew bundle`, installs oh-my-zsh if missing, stows **every**
-top-level directory (new packages are picked up automatically), installs tmux
+directory under `packages/` (new packages are picked up automatically), installs tmux
 plugins via tpm, and links iCloud Drive to `~/icloud` on macOS.
 
 Stow refuses to overwrite existing real files — move an existing `~/.zshrc`
@@ -37,5 +37,5 @@ etc. out of the way first.
 ## Notes
 
 - Machine-specific shell settings go in `~/.zshrc.local` (not tracked).
-- `gnupg/.gnupg/gpg-agent.conf` assumes Apple Silicon Homebrew paths.
+- `packages/gnupg/.gnupg/gpg-agent.conf` assumes Apple Silicon Homebrew paths.
 - Neovim config targets Neovim 0.11+.

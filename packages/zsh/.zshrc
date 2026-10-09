@@ -1,10 +1,5 @@
-# Homebrew (Apple Silicon / Intel / Linuxbrew)
-if [[ -z "${HOMEBREW_PREFIX:-}" ]]; then
-  for _brew in /opt/homebrew/bin/brew /usr/local/bin/brew /home/linuxbrew/.linuxbrew/bin/brew; do
-    [[ -x "$_brew" ]] && eval "$("$_brew" shellenv)" && break
-  done
-  unset _brew
-fi
+# Homebrew (Apple Silicon)
+eval "$(/opt/homebrew/bin/brew shellenv)"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
